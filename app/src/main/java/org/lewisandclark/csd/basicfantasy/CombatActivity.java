@@ -21,8 +21,16 @@ import static org.lewisandclark.csd.basicfantasy.HomeActivity.sCurrentCharacterI
 
 public class CombatActivity extends AppCompatActivity {
 
-    private TextView mTextViewLeftNavigate;
-    private TextView mTextViewRightNavigate;
+    private CharacterList sCharacters = CharacterList.getPlayerCharacterList(this);
+    private PlayerCharacter mCurrentCharacter;
+
+
+    private TextView mTextViewCharacterName;
+    private TextView mTextViewCharacterClass;
+
+    //stuff specific to the layout goes here
+    private EquipmentDatabase sEquipmentDatabase = EquipmentDatabase.getEquipmentDatabase(this);
+
     private TextView mHPMaxScore;
     private TextView mHPCurrentScore;
     private TextView mACScore;
@@ -37,11 +45,8 @@ public class CombatActivity extends AppCompatActivity {
     private TextView[] mWeaponToHitArray;
     private TextView[] mWeaponDamageArray;
 
-
-    private CharacterList sCharacters = CharacterList.getPlayerCharacterList(this);
-    private PlayerCharacter mCurrentCharacter;
-    private EquipmentDatabase sEquipmentDatabase = EquipmentDatabase.getEquipmentDatabase(this);
-
+    private TextView mTextViewLeftNavigate;
+    private TextView mTextViewRightNavigate;
 
     public static Intent newIntent(Context packageContext) {
         Intent theIntent = new Intent(packageContext, CombatActivity.class);
@@ -56,12 +61,20 @@ public class CombatActivity extends AppCompatActivity {
 
         ArrayList<Weapon> equippedWeapons;
 
+
+        mCurrentCharacter = sCharacters.getPlayerCharacter(sCurrentCharacterIndex);
+        int totHP = mCurrentCharacter.getTotalHitPoints();
+
+        mTextViewCharacterName = findViewById(R.id.character_name);
+        mTextViewCharacterName.setText(mCurrentCharacter.getName());
+
+        mTextViewCharacterClass = findViewById(R.id.character_class_and_level);
+        mTextViewCharacterClass.setText(mCurrentCharacter.getCharacterClass().toString());
+
         mHPMaxScore = findViewById(R.id.hp_max_score);
         mHPCurrentScore = findViewById(R.id.hp_current_score);
         mACScore = findViewById(R.id.AC_score);
 
-        mCurrentCharacter = sCharacters.getPlayerCharacter(sCurrentCharacterIndex);
-        int totHP = mCurrentCharacter.getTotalHitPoints();
         Log.d("PAGE2", "onCreate: total HP = "+ Integer.toString(totHP));
         mHPMaxScore.setText(Integer.toString(totHP));
         mHPCurrentScore.setText(Integer.toString(mCurrentCharacter.getCurrentHitPoints()));

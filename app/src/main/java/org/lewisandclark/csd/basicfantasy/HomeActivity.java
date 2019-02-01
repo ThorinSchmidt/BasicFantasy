@@ -141,6 +141,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 finish();
+                moveTaskToBack(true);
             }
         });
 

@@ -8,6 +8,56 @@
     android:background="@color/white"
 
     tools:context=".CombatActivity">
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:measureWithLargestChild="true"
+        android:stretchColumns="*">
+
+        <TableRow
+            android:id="@+id/title_row"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:weightSum="2"
+            tools:ignore="UselessParent">
+
+            <TextView
+                android:id="@+id/character_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:layout_weight="1"
+                android:background="@drawable/customborder_title"
+                android:gravity="center_horizontal"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:textSize="18sp"
+                tools:text="Gray Mouser" />
+
+            <TextView
+                android:id="@+id/character_class_and_level"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:layout_weight="1"
+                android:background="@drawable/customborder_title"
+                android:gravity="center_horizontal"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:textSize="18sp"
+                tools:text="Thief 5" />
+
+
+        </TableRow>
+
+    </TableLayout>
+
+    <View
+        android:id="@+id/divider1"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@color/black" />
 
     <TableLayout
         android:layout_width="match_parent"
