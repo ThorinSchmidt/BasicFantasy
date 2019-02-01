@@ -1,12 +1,18 @@
 package org.lewisandclark.csd.basicfantasy;
 
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -104,4 +110,54 @@ public class HomeActivity extends AppCompatActivity {
             startActivity(theIntent);
         });
     }
+
+    public void onBackPressed(){
+        openDialog();
+
+        return;
+    }
+
+    public void openDialog(){
+
+        AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+
+        TextView mTextViewTitle = new TextView(this);
+        mTextViewTitle.setText("Exit");
+        mTextViewTitle.setPadding(3, 3, 3, 10);
+        mTextViewTitle.setGravity(Gravity.CENTER);
+        mTextViewTitle.setTextColor(Color.BLUE);
+        mTextViewTitle.setTextSize(20);
+        alertDialog.setCustomTitle(mTextViewTitle);
+
+        TextView msg = new TextView(this);
+
+        msg.setText("Exit the Basic Fantasy app?");
+        msg.setGravity(Gravity.CENTER_HORIZONTAL);
+        msg.setTextColor(Color.BLACK);
+        msg.setTextSize(18);
+        alertDialog.setView(msg);
+
+        alertDialog.setButton(Dialog.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                finish();
+            }
+        });
+
+        alertDialog.setButton(Dialog.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+            }
+        });
+
+        new Dialog(getApplicationContext());
+        alertDialog.show();
+
+        //set properties of the OK button
+        final Button okButton = alertDialog.getButton(AlertDialog.BUTTON_NEUTRAL);
+        LinearLayout.LayoutParams neutralButtonLP = (LinearLayout.LayoutParams) okButton.getLayoutParams();
+        okButton.setTextColor(Color.BLUE);
+        okButton.setLayoutParams(neutralButtonLP);
+    }
+
 }

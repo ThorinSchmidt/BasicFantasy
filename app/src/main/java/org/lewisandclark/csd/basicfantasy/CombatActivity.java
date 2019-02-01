@@ -130,4 +130,12 @@ public class CombatActivity extends AppCompatActivity {
         });
 
     }
+
+    public void onBackPressed(){
+        Log.d("BUTTON", "pressed BACK button.");
+        Intent theIntent = HomeActivity.newIntent(this, sCurrentCharacterIndex);
+        startActivity(theIntent);
+
+        return;
+    }
 }

@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -231,6 +232,14 @@ public class StatsActivity extends AppCompatActivity {
                 overridePendingTransition(R.anim.right_to_left_in, R.anim.right_to_left_out);
             }
         });
+    }
+
+    public void onBackPressed(){
+        Log.d("BUTTON", "pressed BACK button.");
+        Intent theIntent = HomeActivity.newIntent(this, sCurrentCharacterIndex);
+        startActivity(theIntent);
+
+        return;
     }
 
 

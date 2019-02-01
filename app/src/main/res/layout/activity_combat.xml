@@ -343,13 +343,13 @@
     </TableLayout>
 
     <View
-        android:id="@+id/divider3"
+        android:id="@+id/divider_bottom"
         android:layout_width="match_parent"
         android:layout_height="3dp"
         android:background="@color/black" />
 
     <LinearLayout
-        android:id="@+id/button_row_1"
+        android:id="@+id/button_row_bottom"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_gravity="bottom|center"
@@ -374,7 +374,6 @@
             android:textColor="@color/black"
             android:textSize="18sp"
             tools:ignore="NestedWeights" />
-
 
         <TextView
             android:id="@+id/right_button"
