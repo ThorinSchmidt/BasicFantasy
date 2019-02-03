@@ -17,15 +17,8 @@ import android.widget.TextView;
 
 import org.lewisandclark.csd.basicfantasy.model.CharacterList;
 import org.lewisandclark.csd.basicfantasy.model.PlayerCharacter;
-import org.lewisandclark.csd.basicfantasy.utils.DieRoller;
 
 import static org.lewisandclark.csd.basicfantasy.HomeActivity.sCurrentCharacterIndex;
-import static org.lewisandclark.csd.basicfantasy.model.Attribute.CHA;
-import static org.lewisandclark.csd.basicfantasy.model.Attribute.CON;
-import static org.lewisandclark.csd.basicfantasy.model.Attribute.DEX;
-import static org.lewisandclark.csd.basicfantasy.model.Attribute.INT;
-import static org.lewisandclark.csd.basicfantasy.model.Attribute.STR;
-import static org.lewisandclark.csd.basicfantasy.model.Attribute.WIS;
 
 public class TemplateActivity extends AppCompatActivity {
 
@@ -58,7 +51,7 @@ public class TemplateActivity extends AppCompatActivity {
         mTextViewCharacterName = findViewById(R.id.character_name);
         mTextViewCharacterName.setText(mCurrentCharacter.getName());
 
-        mTextViewCharacterClass = findViewById(R.id.character_class_and_level);
+        mTextViewCharacterClass = findViewById(R.id.character_class);
         mTextViewCharacterClass.setText(mCurrentCharacter.getCharacterClass().toString());
 
         //stuff specific to the layout goes here

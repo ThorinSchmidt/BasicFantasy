@@ -51,7 +51,7 @@ public class ThiefActivity extends AppCompatActivity {
         mTextViewCharacterName = findViewById(R.id.character_name);
         mTextViewCharacterName.setText(mCurrentCharacter.getName());
 
-        mTextViewCharacterClass = findViewById(R.id.character_class_and_level);
+        mTextViewCharacterClass = findViewById(R.id.character_class);
         mTextViewCharacterClass.setText(mCurrentCharacter.getCharacterClass().toString());
 
         //stuff specific to the layout goes here

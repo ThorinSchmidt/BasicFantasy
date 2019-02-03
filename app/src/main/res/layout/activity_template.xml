@@ -34,7 +34,7 @@
                 tools:text="Gray Mouser" />
 
             <TextView
-                android:id="@+id/character_class_and_level"
+                android:id="@+id/character_class"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="2dp"

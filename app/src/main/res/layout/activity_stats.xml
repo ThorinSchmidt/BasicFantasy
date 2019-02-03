@@ -34,7 +34,7 @@
                 tools:text="Gray Mouser" />
 
             <TextView
-                android:id="@+id/character_class_and_level"
+                android:id="@+id/character_class"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="2dp"
@@ -45,10 +45,42 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                 android:textSize="18sp"
                 tools:text="Thief 5" />
-
-
         </TableRow>
 
+        <TableRow
+            android:id="@+id/level_row"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:weightSum="2"
+            tools:ignore="UselessParent">
+
+            <TextView
+                android:id="@+id/character_xp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:layout_weight="1"
+                android:background="@drawable/customborder_title"
+                android:gravity="center_horizontal"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:textSize="18sp"
+                tools:text="XP: 0" />
+
+            <TextView
+                android:id="@+id/character_level"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:layout_weight="1"
+                android:background="@drawable/customborder_title"
+                android:gravity="center_horizontal"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:textSize="18sp"
+                tools:text="Level: 1" />
+        </TableRow>
     </TableLayout>
 
     <View

@@ -27,7 +27,7 @@ import static org.lewisandclark.csd.basicfantasy.model.Attribute.INT;
 import static org.lewisandclark.csd.basicfantasy.model.Attribute.STR;
 import static org.lewisandclark.csd.basicfantasy.model.Attribute.WIS;
 
-public class StatsActivity extends AppCompatActivity {
+public class StatsActivity extends AppCompatActivity implements XPDialog.XPDialogListener {
 
     static final String TAG = "StatsActivity";
 
@@ -36,6 +36,8 @@ public class StatsActivity extends AppCompatActivity {
 
     private TextView mTextViewCharacterName;
     private TextView mTextViewCharacterClass;
+    private TextView mTextViewCharacterLevel;
+    private TextView mTextViewCharacterXP;
     private TextView mTextViewStrengthScore;
     private TextView mTextViewStrengthMod;
     private TextView mTextViewDexterityScore;
@@ -79,7 +81,9 @@ public class StatsActivity extends AppCompatActivity {
         mCurrentCharacter = sCharacters.getPlayerCharacter(sCurrentCharacterIndex);
 
         mTextViewCharacterName = findViewById(R.id.character_name);
-        mTextViewCharacterClass = findViewById(R.id.character_class_and_level);
+        mTextViewCharacterClass = findViewById(R.id.character_class);
+        mTextViewCharacterLevel = findViewById(R.id.character_level);
+        mTextViewCharacterXP = findViewById(R.id.character_xp);
         mTextViewStrengthScore = findViewById(R.id.strength_score);
         mTextViewStrengthMod = findViewById(R.id.strength_mod);
         mTextViewDexterityScore = findViewById(R.id.dexterity_score);
@@ -111,6 +115,8 @@ public class StatsActivity extends AppCompatActivity {
 
         mTextViewCharacterName.setText(mCurrentCharacter.getName());
         mTextViewCharacterClass.setText(mCurrentCharacter.getCharacterClass().toString());
+        mTextViewCharacterXP.setText("XP: " + String.valueOf(mCurrentCharacter.getXP()));
+        mTextViewCharacterLevel.setText("Level: " + String.valueOf(mCurrentCharacter.getLevel()));
         mTextViewStrengthScore.setText(mCurrentCharacter.getStatArray()[STR.ordinal()].getScoreString());
         mTextViewStrengthMod.setText(mCurrentCharacter.getStatArray()[STR.ordinal()].getModifierString());
         mTextViewDexterityScore.setText(mCurrentCharacter.getStatArray()[DEX.ordinal()].getScoreString());
@@ -123,6 +129,13 @@ public class StatsActivity extends AppCompatActivity {
         mTextViewWisdomMod.setText(mCurrentCharacter.getStatArray()[WIS.ordinal()].getModifierString());
         mTextViewCharismaScore.setText(mCurrentCharacter.getStatArray()[CHA.ordinal()].getScoreString());
         mTextViewCharismaMod.setText(mCurrentCharacter.getStatArray()[CHA.ordinal()].getModifierString());
+
+        mTextViewCharacterXP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openXPDialog();
+            }
+        });
 
         mLinearLayoutDeathSave.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -292,5 +305,17 @@ public class StatsActivity extends AppCompatActivity {
         okButton.setLayoutParams(neutralButtonLP);
     }
 
+    public void openXPDialog(){
+        XPDialog xpDialog = new XPDialog();
+        xpDialog.show(getSupportFragmentManager(), "XP dialog");
+    }
 
+    @Override
+    public void applyXP(int xp) {
+        int currentXP = mCurrentCharacter.getXP();
+        currentXP += xp;
+        mCurrentCharacter.setXP(currentXP);
+        mTextViewCharacterXP.setText("XP: " + String.valueOf(currentXP));
+        Log.d(TAG, "applyXP: " + String.valueOf(currentXP));
+    }
 }

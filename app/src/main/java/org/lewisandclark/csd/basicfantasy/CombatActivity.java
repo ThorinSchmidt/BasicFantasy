@@ -68,7 +68,7 @@ public class CombatActivity extends AppCompatActivity {
         mTextViewCharacterName = findViewById(R.id.character_name);
         mTextViewCharacterName.setText(mCurrentCharacter.getName());
 
-        mTextViewCharacterClass = findViewById(R.id.character_class_and_level);
+        mTextViewCharacterClass = findViewById(R.id.character_class);
         mTextViewCharacterClass.setText(mCurrentCharacter.getCharacterClass().toString());
 
         mHPMaxScore = findViewById(R.id.hp_max_score);
