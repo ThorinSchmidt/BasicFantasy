@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -312,10 +313,37 @@ public class StatsActivity extends AppCompatActivity implements XPDialog.XPDialo
 
     @Override
     public void applyXP(int xp) {
+        Resources r = getResources();
         int currentXP = mCurrentCharacter.getXP();
+        int currentLevel = mCurrentCharacter.getLevel();
+        int newLevel = 0;
         currentXP += xp;
         mCurrentCharacter.setXP(currentXP);
         mTextViewCharacterXP.setText("XP: " + String.valueOf(currentXP));
         Log.d(TAG, "applyXP: " + String.valueOf(currentXP));
+        int[] levelArray = {};
+        switch (mCurrentCharacter.getCharacterClass()){
+            case THIEF: levelArray = r.getIntArray(R.array.THIEF_LEVELS);
+                        break;
+            case CLERIC: levelArray = r.getIntArray(R.array.CLERIC_LEVELS);
+                break;
+            case FIGHTER: levelArray = r.getIntArray(R.array.FIGHTER_LEVELS);
+                break;
+            case MAGIC_USER: levelArray = r.getIntArray(R.array.MAGICUSER_LEVELS);
+                break;
+            case MU_THIEF: levelArray = r.getIntArray(R.array.MU_THIEF_LEVELS);
+                break;
+            case FIGHTER_MU: levelArray = r.getIntArray(R.array.FIGHTER_MU_LEVELS);
+                break;
+        }
+        for(int i=0; i < levelArray.length-1; i++){
+            newLevel = 20;
+            if(currentXP >= levelArray[i] && currentXP < levelArray[i+1]){
+                    newLevel = i;
+                    break;
+            }
+        }
+        mCurrentCharacter.setLevel(newLevel);
+        mTextViewCharacterLevel.setText(String.valueOf(newLevel));
     }
 }
