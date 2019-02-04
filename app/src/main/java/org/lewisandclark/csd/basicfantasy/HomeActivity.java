@@ -87,10 +87,13 @@ public class HomeActivity extends AppCompatActivity {
         mCreateCharacterButton = findViewById(R.id.create_button);
         mCreateCharacterButton.setOnClickListener(view -> {
             sCurrentCharacterIndex = sCharacters.sizeOf();
-            sCharacters.addCharacter(new PlayerCharacter(sCharacters.sizeOf()));
-            Intent theIntent = RollAttributesActivity
-                    .newIntent(HomeActivity.this);
-            startActivity(theIntent);
+            //sCharacters.addCharacter(new PlayerCharacter(sCharacters.sizeOf()));
+            //Intent theIntent = RollAttributesActivity
+            //        .newIntent(HomeActivity.this);
+            //startActivity(theIntent);
+            Toast.makeText(HomeActivity.this,
+                    "Create Character Button clicked.",
+                    Toast.LENGTH_SHORT).show();
         });
 
         mOpenCharacterButton = findViewById(R.id.open_button);
@@ -104,11 +107,12 @@ public class HomeActivity extends AppCompatActivity {
                 "Delete Character Button clicked.",
                 Toast.LENGTH_SHORT).show());
 
+        /* only included for testing purposes
         mBuyEquipmentButton = findViewById(R.id.buy_equipment_button);
         mBuyEquipmentButton.setOnClickListener(view -> {
             Intent theIntent = BuyEquipmentActivity.newIntent(HomeActivity.this);
             startActivity(theIntent);
-        });
+        });*/
     }
 
     public void onBackPressed(){
