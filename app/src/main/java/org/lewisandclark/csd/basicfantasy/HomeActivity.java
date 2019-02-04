@@ -86,7 +86,7 @@ public class HomeActivity extends AppCompatActivity {
 
         mCreateCharacterButton = findViewById(R.id.create_button);
         mCreateCharacterButton.setOnClickListener(view -> {
-            sCurrentCharacterIndex = sCharacters.sizeOf();
+            //sCurrentCharacterIndex = sCharacters.sizeOf();
             //sCharacters.addCharacter(new PlayerCharacter(sCharacters.sizeOf()));
             //Intent theIntent = RollAttributesActivity
             //        .newIntent(HomeActivity.this);

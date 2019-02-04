@@ -54,20 +54,23 @@ public class ChooseCurrentCharacterActivity extends AppCompatActivity {
 
         //Populate the ScrollView.
         mCharactersGroup = findViewById(R.id.characters_radiogroup);
+        int idIndex = 0;
         for (PlayerCharacter character: sCharacters.getList()){
             Log.d("CHARACTER", "found one");
             RadioButton rb = new RadioButton(this);
             rb.setText(String.format("%s:", character.getName()));
             rb.setChecked(false);
             rb.setTextSize(TypedValue.COMPLEX_UNIT_SP, 24);
+            rb.setId(idIndex);
             mCharactersGroup.addView(rb);
+            idIndex++;
         }
 
         mAcceptButton = findViewById(R.id.character_accept_button);
         mAcceptButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                sCurrentCharacterIndex = (mCharactersGroup.getCheckedRadioButtonId())-1;
+                sCurrentCharacterIndex = mCharactersGroup.getCheckedRadioButtonId();
                 Log.d("CHOOSE_C_C",  "Current Index: " + Integer.toString(sCurrentCharacterIndex));
                 Intent theIntent =
                         HomeActivity.newIntent(ChooseCurrentCharacterActivity.this,
