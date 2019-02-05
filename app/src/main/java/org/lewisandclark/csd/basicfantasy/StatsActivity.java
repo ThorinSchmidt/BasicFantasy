@@ -2,13 +2,12 @@ package org.lewisandclark.csd.basicfantasy;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -20,7 +19,7 @@ import org.lewisandclark.csd.basicfantasy.model.CharacterList;
 import org.lewisandclark.csd.basicfantasy.model.PlayerCharacter;
 import org.lewisandclark.csd.basicfantasy.utils.DieRoller;
 
-import static org.lewisandclark.csd.basicfantasy.HomeActivity.*;
+import static org.lewisandclark.csd.basicfantasy.HomeActivity.sCurrentCharacterIndex;
 import static org.lewisandclark.csd.basicfantasy.model.Attribute.CHA;
 import static org.lewisandclark.csd.basicfantasy.model.Attribute.CON;
 import static org.lewisandclark.csd.basicfantasy.model.Attribute.DEX;
@@ -35,43 +34,12 @@ public class StatsActivity extends AppCompatActivity implements XPDialog.XPDialo
     private CharacterList sCharacters = CharacterList.getPlayerCharacterList(this);
     private PlayerCharacter mCurrentCharacter;
 
-    private TextView mTextViewCharacterName;
-    private TextView mTextViewCharacterClass;
     private TextView mTextViewCharacterLevel;
     private TextView mTextViewCharacterXP;
-    private TextView mTextViewStrengthScore;
-    private TextView mTextViewStrengthMod;
-    private TextView mTextViewDexterityScore;
-    private TextView mTextViewDexterityMod;
-    private TextView mTextViewIntelligenceScore;
-    private TextView mTextViewIntelligenceMod;
-    private TextView mTextViewConstitutionScore;
-    private TextView mTextViewConstitutionMod;
-    private TextView mTextViewWisdomScore;
-    private TextView mTextViewWisdomMod;
-    private TextView mTextViewCharismaScore;
-    private TextView mTextViewCharismaMod;
-
-    private LinearLayout mLayoutStrength;
-    private LinearLayout mLayoutDexterity;
-    private LinearLayout mLayoutIntelligence;
-    private LinearLayout mLayoutConstitution;
-    private LinearLayout mLayoutWisdom;
-    private LinearLayout mLayoutCharisma;
-
-    private TextView mLinearLayoutDeathSave;
-    private TextView mLinearLayoutMagicSave;
-    private TextView mLinearLayoutParalysisSave;
-    private TextView mLinearLayoutDragonSave;
-    private TextView mLinearLayoutSpellSave;
-
-    private TextView mTextViewLeftNavigate;
-    private TextView mTextViewRightNavigate;
 
     public static Intent newIntent(Context packageContext){
-        Intent theIntent = new Intent(packageContext, StatsActivity.class);
         //Intent Extras go here
-        return theIntent;
+        return new Intent(packageContext, StatsActivity.class);
     }
 
     @Override
@@ -81,43 +49,43 @@ public class StatsActivity extends AppCompatActivity implements XPDialog.XPDialo
 
         mCurrentCharacter = sCharacters.getPlayerCharacter(sCurrentCharacterIndex);
 
-        mTextViewCharacterName = findViewById(R.id.character_name);
-        mTextViewCharacterClass = findViewById(R.id.character_class);
+        TextView mTextViewCharacterName = findViewById(R.id.character_name);
+        TextView mTextViewCharacterClass = findViewById(R.id.character_class);
         mTextViewCharacterLevel = findViewById(R.id.character_level);
         mTextViewCharacterXP = findViewById(R.id.character_xp);
-        mTextViewStrengthScore = findViewById(R.id.strength_score);
-        mTextViewStrengthMod = findViewById(R.id.strength_mod);
-        mTextViewDexterityScore = findViewById(R.id.dexterity_score);
-        mTextViewDexterityMod = findViewById(R.id.dexterity_mod);
-        mTextViewIntelligenceScore = findViewById(R.id.intelligence_score);
-        mTextViewIntelligenceMod = findViewById(R.id.intelligence_mod);
-        mTextViewConstitutionScore = findViewById(R.id.constitution_score);
-        mTextViewConstitutionMod = findViewById(R.id.constitution_mod);
-        mTextViewWisdomScore = findViewById(R.id.wisdom_score);
-        mTextViewWisdomMod = findViewById(R.id.wisdom_mod);
-        mTextViewCharismaScore = findViewById(R.id.charisma_score);
-        mTextViewCharismaMod = findViewById(R.id.charisma_mod);
+        TextView mTextViewStrengthScore = findViewById(R.id.strength_score);
+        TextView mTextViewStrengthMod = findViewById(R.id.strength_mod);
+        TextView mTextViewDexterityScore = findViewById(R.id.dexterity_score);
+        TextView mTextViewDexterityMod = findViewById(R.id.dexterity_mod);
+        TextView mTextViewIntelligenceScore = findViewById(R.id.intelligence_score);
+        TextView mTextViewIntelligenceMod = findViewById(R.id.intelligence_mod);
+        TextView mTextViewConstitutionScore = findViewById(R.id.constitution_score);
+        TextView mTextViewConstitutionMod = findViewById(R.id.constitution_mod);
+        TextView mTextViewWisdomScore = findViewById(R.id.wisdom_score);
+        TextView mTextViewWisdomMod = findViewById(R.id.wisdom_mod);
+        TextView mTextViewCharismaScore = findViewById(R.id.charisma_score);
+        TextView mTextViewCharismaMod = findViewById(R.id.charisma_mod);
 
-        mLayoutStrength = findViewById(R.id.strength_layout);
-        mLayoutDexterity = findViewById(R.id.dexterity_layout);
-        mLayoutIntelligence = findViewById(R.id.intelligence_layout);
-        mLayoutConstitution = findViewById(R.id.constitution_layout);
-        mLayoutWisdom = findViewById(R.id.wisdom_layout);
-        mLayoutCharisma = findViewById(R.id.charisma_layout);
+        LinearLayout mLayoutStrength = findViewById(R.id.strength_layout);
+        LinearLayout mLayoutDexterity = findViewById(R.id.dexterity_layout);
+        LinearLayout mLayoutIntelligence = findViewById(R.id.intelligence_layout);
+        LinearLayout mLayoutConstitution = findViewById(R.id.constitution_layout);
+        LinearLayout mLayoutWisdom = findViewById(R.id.wisdom_layout);
+        LinearLayout mLayoutCharisma = findViewById(R.id.charisma_layout);
 
-        mLinearLayoutDeathSave = findViewById(R.id.death_save);
-        mLinearLayoutMagicSave = findViewById(R.id.magic_save);
-        mLinearLayoutParalysisSave = findViewById(R.id.paralysis_save);
-        mLinearLayoutDragonSave = findViewById(R.id.dragon_save);
-        mLinearLayoutSpellSave = findViewById(R.id.spell_save);
+        TextView mLinearLayoutDeathSave = findViewById(R.id.death_save);
+        TextView mLinearLayoutMagicSave = findViewById(R.id.magic_save);
+        TextView mLinearLayoutParalysisSave = findViewById(R.id.paralysis_save);
+        TextView mLinearLayoutDragonSave = findViewById(R.id.dragon_save);
+        TextView mLinearLayoutSpellSave = findViewById(R.id.spell_save);
 
-        mTextViewLeftNavigate = findViewById(R.id.left_button);
-        mTextViewRightNavigate = findViewById(R.id.right_button);
+        TextView mTextViewLeftNavigate = findViewById(R.id.left_button);
+        TextView mTextViewRightNavigate = findViewById(R.id.right_button);
 
         mTextViewCharacterName.setText(mCurrentCharacter.getName());
-        mTextViewCharacterClass.setText(mCurrentCharacter.getCharacterClass().toString());
-        mTextViewCharacterXP.setText("XP: " + String.valueOf(mCurrentCharacter.getXP()));
-        mTextViewCharacterLevel.setText("Level: " + String.valueOf(mCurrentCharacter.getLevel()));
+        mTextViewCharacterClass.setText(mCurrentCharacter.getCharacterClass().getResId());
+        mTextViewCharacterXP.setText(getString(R.string.xp_string, mCurrentCharacter.getXP()));
+        mTextViewCharacterLevel.setText(getString(R.string.level_string, mCurrentCharacter.getLevel()));
         mTextViewStrengthScore.setText(mCurrentCharacter.getStatArray()[STR.ordinal()].getScoreString());
         mTextViewStrengthMod.setText(mCurrentCharacter.getStatArray()[STR.ordinal()].getModifierString());
         mTextViewDexterityScore.setText(mCurrentCharacter.getStatArray()[DEX.ordinal()].getScoreString());
@@ -134,117 +102,56 @@ public class StatsActivity extends AppCompatActivity implements XPDialog.XPDialo
         mTextViewCharacterXP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openXPDialog();
+                StatsActivity.this.openXPDialog();
             }
         });
 
-        mLinearLayoutDeathSave.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                openDialog("Death Ray or Poison", mCurrentCharacter.getDeathRayPosionMod(),
-                        mCurrentCharacter.getDeathRayPoisonSave());
-            }
+        mLinearLayoutDeathSave.setOnClickListener(view -> openDialog("Death Ray or Poison", mCurrentCharacter.getDeathRayPosionMod(),
+                mCurrentCharacter.getDeathRayPoisonSave()));
+
+        mLinearLayoutMagicSave.setOnClickListener(view -> openDialog("Magic Wands", mCurrentCharacter.getWandMod(),
+                mCurrentCharacter.getWandSave()));
+
+        mLinearLayoutParalysisSave.setOnClickListener(view -> openDialog("Paralysis or Turn to Stone", mCurrentCharacter.getParalysisStoneMod(),
+                mCurrentCharacter.getParalysisStoneSave()));
+
+        mLinearLayoutDragonSave.setOnClickListener(view -> openDialog("Dragon Breath", mCurrentCharacter.getDragonBreathMod(),
+                mCurrentCharacter.getDragonBreathSave()));
+
+
+        mLinearLayoutSpellSave.setOnClickListener(view -> openDialog("Rods, Staves, and Spells", mCurrentCharacter.getRodStaveSpellMod(),
+                mCurrentCharacter.getRodStaveSpellSave()));
+
+        mLayoutStrength.setOnClickListener(view -> openDialog("Strength", mCurrentCharacter.getStatArray()[STR.ordinal()].getModifier(),
+                mCurrentCharacter.getAbilityRoll()));
+
+        mLayoutDexterity.setOnClickListener(view -> openDialog("Dexterity", mCurrentCharacter.getStatArray()[DEX.ordinal()].getModifier(),
+                mCurrentCharacter.getAbilityRoll()));
+
+        mLayoutIntelligence.setOnClickListener(view -> openDialog("Intelligence", mCurrentCharacter.getStatArray()[INT.ordinal()].getModifier(),
+                mCurrentCharacter.getAbilityRoll()));
+
+        mLayoutConstitution.setOnClickListener(view -> openDialog("Constitution", mCurrentCharacter.getStatArray()[CON.ordinal()].getModifier(),
+                mCurrentCharacter.getAbilityRoll()));
+
+        mLayoutWisdom.setOnClickListener(view -> openDialog("Wisdom", mCurrentCharacter.getStatArray()[WIS.ordinal()].getModifier(),
+                mCurrentCharacter.getAbilityRoll()));
+
+        mLayoutCharisma.setOnClickListener(view -> openDialog("Charisma", mCurrentCharacter.getStatArray()[CHA.ordinal()].getModifier(),
+                mCurrentCharacter.getAbilityRoll()));
+
+        mTextViewLeftNavigate.setOnClickListener(view -> {
+            //open left screen
+            Intent i = CombatActivity.newIntent(StatsActivity.this);
+            startActivity(i);
+            overridePendingTransition(R.anim.left_to_right_in, R.anim.left_to_right_out);
         });
 
-        mLinearLayoutMagicSave.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                openDialog("Magic Wands", mCurrentCharacter.getWandMod(),
-                        mCurrentCharacter.getWandSave());
-            }
-        });
-
-        mLinearLayoutParalysisSave.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                openDialog("Paralysis or Turn to Stone", mCurrentCharacter.getParalysisStoneMod(),
-                        mCurrentCharacter.getParalysisStoneSave());
-            }
-        });
-
-        mLinearLayoutDragonSave.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                openDialog("Dragon Breath", mCurrentCharacter.getDragonBreathMod(),
-                        mCurrentCharacter.getDragonBreathSave());
-            }
-        });
-
-
-        mLinearLayoutSpellSave.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                openDialog("Rods, Staves, and Spells", mCurrentCharacter.getRodStaveSpellMod(),
-                        mCurrentCharacter.getRodStaveSpellSave());
-            }
-        });
-
-        mLayoutStrength.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                openDialog("Strength", mCurrentCharacter.getStatArray()[STR.ordinal()].getModifier(),
-                        mCurrentCharacter.getAbilityRoll());
-            }
-        });
-
-        mLayoutDexterity.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                openDialog("Dexterity", mCurrentCharacter.getStatArray()[DEX.ordinal()].getModifier(),
-                        mCurrentCharacter.getAbilityRoll());
-            }
-        });
-
-        mLayoutIntelligence.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                openDialog("Intelligence", mCurrentCharacter.getStatArray()[INT.ordinal()].getModifier(),
-                        mCurrentCharacter.getAbilityRoll());
-            }
-        });
-
-        mLayoutConstitution.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                openDialog("Constitution", mCurrentCharacter.getStatArray()[CON.ordinal()].getModifier(),
-                        mCurrentCharacter.getAbilityRoll());
-            }
-        });
-
-        mLayoutWisdom.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                openDialog("Wisdom", mCurrentCharacter.getStatArray()[WIS.ordinal()].getModifier(),
-                        mCurrentCharacter.getAbilityRoll());
-            }
-        });
-
-        mLayoutCharisma.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                openDialog("Charisma", mCurrentCharacter.getStatArray()[CHA.ordinal()].getModifier(),
-                        mCurrentCharacter.getAbilityRoll());
-            }
-        });
-
-        mTextViewLeftNavigate.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                //open left screen
-                Intent i = CombatActivity.newIntent(StatsActivity.this);
-                startActivity(i);
-                overridePendingTransition(R.anim.left_to_right_in, R.anim.left_to_right_out);
-            }
-        });
-
-        mTextViewRightNavigate.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                //open right screen
-                Intent i = CombatActivity.newIntent(StatsActivity.this);
-                startActivity(i);
-                overridePendingTransition(R.anim.right_to_left_in, R.anim.right_to_left_out);
-            }
+        mTextViewRightNavigate.setOnClickListener(view -> {
+            //open right screen
+            Intent i = CombatActivity.newIntent(StatsActivity.this);
+            startActivity(i);
+            overridePendingTransition(R.anim.right_to_left_in, R.anim.right_to_left_out);
         });
     }
 
@@ -252,8 +159,6 @@ public class StatsActivity extends AppCompatActivity implements XPDialog.XPDialo
         Log.d("BUTTON", "pressed BACK button.");
         Intent theIntent = HomeActivity.newIntent(this, sCurrentCharacterIndex);
         startActivity(theIntent);
-
-        return;
     }
 
 
@@ -263,10 +168,10 @@ public class StatsActivity extends AppCompatActivity implements XPDialog.XPDialo
         String modString;
 
         if (mod > -1){
-            modString = "+"+String.valueOf(mod);
+            modString = "+";
         }
         else {
-            modString = String.valueOf(mod);
+            modString = "-";
         }
 
         AlertDialog alertDialog = new AlertDialog.Builder(this).create();
@@ -281,19 +186,14 @@ public class StatsActivity extends AppCompatActivity implements XPDialog.XPDialo
 
         TextView msg = new TextView(this);
 
-        msg.setText("Target Score:  "+String.valueOf(target)+
-                "\nYour roll:  "+ String.valueOf(roll)+modString+
-                " = "+String.valueOf(roll+mod));
+        msg.setText(getString(R.string.saving_throw_msg, target, roll, modString, roll, roll+mod));
         msg.setGravity(Gravity.CENTER_HORIZONTAL);
         msg.setTextColor(Color.BLACK);
         msg.setTextSize(18);
         alertDialog.setView(msg);
 
-        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                //no action to perform
-            }
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK", (dialogInterface, i) -> {
+            //no action to perform
         });
 
         new Dialog(getApplicationContext());
@@ -315,11 +215,12 @@ public class StatsActivity extends AppCompatActivity implements XPDialog.XPDialo
     public void applyXP(int xp) {
         Resources r = getResources();
         int currentXP = mCurrentCharacter.getXP();
-        int currentLevel = mCurrentCharacter.getLevel();
+        //needed for later: the rule of not allowing more than 1 level gain at a time
+        //int currentLevel = mCurrentCharacter.getLevel();
         int newLevel = 0;
         currentXP += xp;
         mCurrentCharacter.setXP(currentXP);
-        mTextViewCharacterXP.setText("XP: " + String.valueOf(currentXP));
+        mTextViewCharacterXP.setText(getString(R.string.xp_string, mCurrentCharacter.getXP()));
         Log.d(TAG, "applyXP: " + String.valueOf(currentXP));
         int[] levelArray = {};
         switch (mCurrentCharacter.getCharacterClass()){

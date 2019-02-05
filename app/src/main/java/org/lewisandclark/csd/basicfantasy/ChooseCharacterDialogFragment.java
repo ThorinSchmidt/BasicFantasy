@@ -13,9 +13,9 @@ import android.widget.EditText;
 /**
  * Created by Thorin Schmidt on 2/2/2019.
  */
-public class XPDialog  extends AppCompatDialogFragment {
+public class ChooseCharacterDialogFragment extends AppCompatDialogFragment {
     private EditText mEditTextXP;
-    private XPDialogListener listener;
+    private CCDialogListener listener;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -35,8 +35,8 @@ public class XPDialog  extends AppCompatDialogFragment {
                 .setPositiveButton("Add XP", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        int xp = Integer.valueOf(mEditTextXP.getText().toString());
-                        listener.applyXP(xp);
+                        int num = 0;
+                        listener.changeCharacter(num);
 
                     }
                 });
@@ -49,14 +49,14 @@ public class XPDialog  extends AppCompatDialogFragment {
     public void onAttach(Context context) {
         super.onAttach(context);
         try {
-            listener = (XPDialogListener) context;
+            listener = (CCDialogListener) context;
         } catch (ClassCastException e) {
             throw new ClassCastException(context.toString() +
                     "must implement CCDialogListener.");
         }
     }
 
-    public interface XPDialogListener{
-        void applyXP(int xp);
+    public interface CCDialogListener {
+        void changeCharacter(int num);
     }
 }

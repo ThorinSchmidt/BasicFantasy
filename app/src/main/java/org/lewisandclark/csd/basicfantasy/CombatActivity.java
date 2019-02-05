@@ -21,37 +21,16 @@ import static org.lewisandclark.csd.basicfantasy.HomeActivity.sCurrentCharacterI
 
 public class CombatActivity extends AppCompatActivity {
 
-    private CharacterList sCharacters = CharacterList.getPlayerCharacterList(this);
-    private PlayerCharacter mCurrentCharacter;
+    private CharacterList sCharacters;
 
+    {
+        sCharacters = CharacterList.getPlayerCharacterList(this);
+    }
 
-    private TextView mTextViewCharacterName;
-    private TextView mTextViewCharacterClass;
-
-    //stuff specific to the layout goes here
-    private EquipmentDatabase sEquipmentDatabase = EquipmentDatabase.getEquipmentDatabase(this);
-
-    private TextView mHPMaxScore;
-    private TextView mHPCurrentScore;
-    private TextView mACScore;
-
-    private TableRow mWeapon1;
-    private TableRow mWeapon2;
-    private TableRow mWeapon3;
-    private TableRow mWeapon4;
-    private TableRow mWeapon5;
-
-    private TextView[] mWeaponNameArray;
-    private TextView[] mWeaponToHitArray;
-    private TextView[] mWeaponDamageArray;
-
-    private TextView mTextViewLeftNavigate;
-    private TextView mTextViewRightNavigate;
 
     public static Intent newIntent(Context packageContext) {
-        Intent theIntent = new Intent(packageContext, CombatActivity.class);
         //Intent Extras go here
-        return theIntent;
+        return new Intent(packageContext, CombatActivity.class);
     }
 
     @Override
@@ -59,48 +38,45 @@ public class CombatActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_combat);
 
-        ArrayList<Weapon> equippedWeapons;
-
-
-        mCurrentCharacter = sCharacters.getPlayerCharacter(sCurrentCharacterIndex);
+        PlayerCharacter mCurrentCharacter = sCharacters.getPlayerCharacter(sCurrentCharacterIndex);
         int totHP = mCurrentCharacter.getTotalHitPoints();
 
-        mTextViewCharacterName = findViewById(R.id.character_name);
+        TextView mTextViewCharacterName = findViewById(R.id.character_name);
         mTextViewCharacterName.setText(mCurrentCharacter.getName());
 
-        mTextViewCharacterClass = findViewById(R.id.character_class);
+        TextView mTextViewCharacterClass = findViewById(R.id.character_class);
         mTextViewCharacterClass.setText(mCurrentCharacter.getCharacterClass().toString());
 
-        mHPMaxScore = findViewById(R.id.hp_max_score);
-        mHPCurrentScore = findViewById(R.id.hp_current_score);
-        mACScore = findViewById(R.id.AC_score);
+        TextView mHPMaxScore = findViewById(R.id.hp_max_score);
+        TextView mHPCurrentScore = findViewById(R.id.hp_current_score);
+        TextView mACScore = findViewById(R.id.AC_score);
 
         Log.d("PAGE2", "onCreate: total HP = "+ Integer.toString(totHP));
         mHPMaxScore.setText(Integer.toString(totHP));
         mHPCurrentScore.setText(Integer.toString(mCurrentCharacter.getCurrentHitPoints()));
         mACScore.setText(Integer.toString(mCurrentCharacter.getArmorClass()));
 
-        mWeapon1 = findViewById(R.id.weapon_row1);
-        mWeapon2 = findViewById(R.id.weapon_row2);
-        mWeapon3 = findViewById(R.id.weapon_row3);
-        mWeapon4 = findViewById(R.id.weapon_row4);
-        mWeapon5 = findViewById(R.id.weapon_row5);
+        TableRow mWeapon1 = findViewById(R.id.weapon_row1);
+        TableRow mWeapon2 = findViewById(R.id.weapon_row2);
+        TableRow mWeapon3 = findViewById(R.id.weapon_row3);
+        TableRow mWeapon4 = findViewById(R.id.weapon_row4);
+        TableRow mWeapon5 = findViewById(R.id.weapon_row5);
 
-        mWeaponNameArray = new TextView[]{
+        TextView[] mWeaponNameArray = new TextView[]{
                 findViewById(R.id.weapon_1_name),
                 findViewById(R.id.weapon_2_name),
                 findViewById(R.id.weapon_3_name),
                 findViewById(R.id.weapon_4_name),
                 findViewById(R.id.weapon_5_name)};
 
-        mWeaponToHitArray = new TextView[]{
+        TextView[] mWeaponToHitArray = new TextView[]{
                 findViewById(R.id.weapon_1_tohit),
                 findViewById(R.id.weapon_2_tohit),
                 findViewById(R.id.weapon_3_tohit),
                 findViewById(R.id.weapon_4_tohit),
                 findViewById(R.id.weapon_5_tohit)};
 
-        mWeaponDamageArray = new TextView[]{
+        TextView[] mWeaponDamageArray = new TextView[]{
                 findViewById(R.id.weapon_1_damage),
                 findViewById(R.id.weapon_2_damage),
                 findViewById(R.id.weapon_3_damage),
@@ -117,10 +93,8 @@ public class CombatActivity extends AppCompatActivity {
         }
 
 
-
-
-        mTextViewLeftNavigate = findViewById(R.id.left_button);
-        mTextViewRightNavigate = findViewById(R.id.right_button);
+        TextView mTextViewLeftNavigate = findViewById(R.id.left_button);
+        TextView mTextViewRightNavigate = findViewById(R.id.right_button);
 
         mTextViewLeftNavigate.setOnClickListener(new View.OnClickListener() {
             @Override
