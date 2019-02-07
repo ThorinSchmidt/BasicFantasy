@@ -50,7 +50,7 @@
     <string name="gender_female">Female</string>
     <string name="gender_male">Male</string>
     <string name="hair_color">Hair Color:</string>
-    <string name="hp">HP</string>
+    <string name="hp_max">HP Max:</string>
     <string name="invalid_atributes">Invalid Attributes Detected</string>
     <string name="left">Left</string>
     <string name="magic_save">Magic Wands</string>
@@ -84,4 +84,5 @@
     <string name="xp_string">XP: %1$d</string>
     <string name="level_string">Level: %1$d</string>
     <string name="saving_throw_msg">Target Score: %1$d\nYour roll:  %2$d %3$s %4$d = %5$d</string>
+    <string name="hp_cur">HP CUR:</string>
 </resources>

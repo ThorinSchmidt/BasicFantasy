@@ -7,32 +7,16 @@
                                              android:layout_height="wrap_content"
                                              android:padding="16dp">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="378dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="8dp"
-        android:height="30sp"
-        android:gravity="center_horizontal"
-        android:lineSpacingExtra="8sp"
-        android:text="How much XP to add?"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/edit_xp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
     <EditText
         android:id="@+id/edit_xp"
         android:layout_width="0dp"
         android:layout_height="79dp"
-        android:layout_marginTop="76dp"
         android:inputType="numberSigned"
         android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        android:importantForAutofill="no" tools:targetApi="o"/>
 
 </android.support.constraint.ConstraintLayout>

@@ -48,7 +48,7 @@ public class CombatActivity extends AppCompatActivity {
         mTextViewCharacterClass.setText(mCurrentCharacter.getCharacterClass().toString());
 
         TextView mHPMaxScore = findViewById(R.id.hp_max_score);
-        TextView mHPCurrentScore = findViewById(R.id.hp_current_score);
+        TextView mHPCurrentScore = findViewById(R.id.hp_cur_score);
         TextView mACScore = findViewById(R.id.AC_score);
 
         Log.d("PAGE2", "onCreate: total HP = "+ Integer.toString(totHP));

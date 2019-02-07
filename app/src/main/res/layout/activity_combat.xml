@@ -65,10 +65,46 @@
         android:stretchColumns="*">
 
         <TableRow
-            android:id="@+id/hp_AC_row"
+            android:id="@+id/hp_row"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:weightSum="2">
+
+            <LinearLayout
+                android:id="@+id/hp_max_layout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:textAlignment="center"
+                android:padding="10sp"
+                android:background="@drawable/customborder2">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/hp_max"
+                    android:textColor="@color/black"
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" "
+                    android:textColor="@color/black"
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:id="@+id/hp_max_score"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="22sp"
+                    tools:text ="17" />
+
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/hp_layout"
@@ -77,63 +113,38 @@
                 android:layout_margin="2dp"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
-                android:orientation="vertical"
+                android:orientation="horizontal"
                 android:textAlignment="center"
+                android:padding="10sp"
                 android:background="@drawable/customborder2">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/hp"
+                    android:text="@string/hp_cur"
                     android:textColor="@color/black"
-                    android:textSize="24sp" />
+                    android:textSize="22sp" />
 
-                <LinearLayout
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:text=" "
+                    android:textColor="@color/black"
+                    android:textSize="22sp" />
 
-                    <TextView
-                        android:id="@+id/hp_max_label"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/black"
-                        android:textSize="18sp"
-                        android:text ="@string/max" />
-
-
-                    <TextView
-                        android:id="@+id/hp_max_score"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/black"
-                        android:textSize="18sp"
-                        tools:text ="17" />
-
-                    <View
-                        android:layout_width="10dp"
-                        android:layout_height="match_parent"/>
-
-
-                    <TextView
-                        android:id="@+id/hp_current_label"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/black"
-                        android:textSize="18sp"
-                        android:text="@string/cur" />
-
-                    <TextView
-                        android:id="@+id/hp_current_score"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/black"
-                        android:textSize="18sp"
-                        tools:text="17" />
-
-                </LinearLayout>
+                <TextView
+                    android:id="@+id/hp_cur_score"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="22sp"
+                    tools:text ="17" />
 
             </LinearLayout>
+
+        </TableRow>
+
+        <TableRow>
 
             <LinearLayout
                 android:id="@+id/AC_layout"
