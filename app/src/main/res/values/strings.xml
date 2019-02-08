@@ -85,4 +85,6 @@
     <string name="level_string">Level: %1$d</string>
     <string name="saving_throw_msg">Target Score: %1$d\nYour roll:  %2$d %3$s %4$d = %5$d</string>
     <string name="hp_cur">HP CUR:</string>
+    <string name="heal">Heal</string>
+    <string name="damage">Damage</string>
 </resources>

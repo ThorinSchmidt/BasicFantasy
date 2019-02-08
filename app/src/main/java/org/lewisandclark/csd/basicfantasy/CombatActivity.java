@@ -2,6 +2,7 @@ package org.lewisandclark.csd.basicfantasy;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -19,14 +20,11 @@ import java.util.ArrayList;
 
 import static org.lewisandclark.csd.basicfantasy.HomeActivity.sCurrentCharacterIndex;
 
-public class CombatActivity extends AppCompatActivity {
+public class CombatActivity extends AppCompatActivity implements CurHPDialog.CurHPDialogListener {
 
-    private CharacterList sCharacters;
-
-    {
-        sCharacters = CharacterList.getPlayerCharacterList(this);
-    }
-
+    private CharacterList sCharacters = CharacterList.getPlayerCharacterList(this);
+    private PlayerCharacter mCurrentCharacter = sCharacters.getPlayerCharacter(sCurrentCharacterIndex);
+    private TextView mHPCurrentScore;
 
     public static Intent newIntent(Context packageContext) {
         //Intent Extras go here
@@ -38,7 +36,7 @@ public class CombatActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_combat);
 
-        PlayerCharacter mCurrentCharacter = sCharacters.getPlayerCharacter(sCurrentCharacterIndex);
+
         int totHP = mCurrentCharacter.getTotalHitPoints();
 
         TextView mTextViewCharacterName = findViewById(R.id.character_name);
@@ -48,12 +46,19 @@ public class CombatActivity extends AppCompatActivity {
         mTextViewCharacterClass.setText(mCurrentCharacter.getCharacterClass().toString());
 
         TextView mHPMaxScore = findViewById(R.id.hp_max_score);
-        TextView mHPCurrentScore = findViewById(R.id.hp_cur_score);
+        mHPCurrentScore = findViewById(R.id.hp_cur_score);
         TextView mACScore = findViewById(R.id.AC_score);
 
         Log.d("PAGE2", "onCreate: total HP = "+ Integer.toString(totHP));
         mHPMaxScore.setText(Integer.toString(totHP));
         mHPCurrentScore.setText(Integer.toString(mCurrentCharacter.getCurrentHitPoints()));
+        mHPCurrentScore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("COMBAT", "Clicked Current HP");
+                CombatActivity.this.openCurHPDialog();
+            }
+        });
         mACScore.setText(Integer.toString(mCurrentCharacter.getArmorClass()));
 
         TableRow mWeapon1 = findViewById(R.id.weapon_row1);
@@ -124,5 +129,44 @@ public class CombatActivity extends AppCompatActivity {
         startActivity(theIntent);
 
         return;
+    }
+
+    public void openCurHPDialog(){
+        CurHPDialog curHPDialog = new CurHPDialog();
+        curHPDialog.show(getSupportFragmentManager(), "XP dialog");
+    }
+
+    @Override
+    public void applyHP(int hp) {
+        Resources r = getResources();
+        int currentHP = mCurrentCharacter.getCurrentHitPoints();
+        //needed for later: the rule of not allowing more than 1 level gain at a time
+        //int currentLevel = mCurrentCharacter.getLevel();
+        int newLevel = 0;
+        currentHP += hp;
+        mCurrentCharacter.setCurrentHitPoints(currentHP);
+        //mTextViewCharacterXP.setText(getString(R.string.xp_string, mCurrentCharacter.getXP()));
+        //Log.d(TAG, "applyXP: " + String.valueOf(currentXP));
+        int[] levelArray = {};
+        switch (mCurrentCharacter.getCharacterClass()){
+            case THIEF: levelArray = r.getIntArray(R.array.THIEF_LEVELS);
+                break;
+            case CLERIC: levelArray = r.getIntArray(R.array.CLERIC_LEVELS);
+                break;
+            case FIGHTER: levelArray = r.getIntArray(R.array.FIGHTER_LEVELS);
+                break;
+            case MAGIC_USER: levelArray = r.getIntArray(R.array.MAGICUSER_LEVELS);
+                break;
+            case MU_THIEF: levelArray = r.getIntArray(R.array.MU_THIEF_LEVELS);
+                break;
+            case FIGHTER_MU: levelArray = r.getIntArray(R.array.FIGHTER_MU_LEVELS);
+                break;
+        }
+        for(int i=0; i < levelArray.length-1; i++){
+            newLevel = 20;
+
+        }
+        mCurrentCharacter.setLevel(newLevel);
+        //mTextViewCharacterLevel.setText(String.valueOf(newLevel));
     }
 }

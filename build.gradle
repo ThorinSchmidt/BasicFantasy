@@ -5,13 +5,14 @@ buildscript {
     repositories {
         google()
         //jcenter()
+        mavenLocal()
         jcenter {
             url "http://jcenter.bintray.com"
         }
         maven{
             url "http://maven.google.com"
         }
-        mavenLocal()
+
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.3.0'
