@@ -25,6 +25,7 @@ public class CombatActivity extends AppCompatActivity implements CurHPDialog.Cur
     private CharacterList sCharacters = CharacterList.getPlayerCharacterList(this);
     private PlayerCharacter mCurrentCharacter = sCharacters.getPlayerCharacter(sCurrentCharacterIndex);
     private TextView mHPCurrentScore;
+    private TextView mHPMaxScore;
 
     public static Intent newIntent(Context packageContext) {
         //Intent Extras go here
@@ -45,13 +46,13 @@ public class CombatActivity extends AppCompatActivity implements CurHPDialog.Cur
         TextView mTextViewCharacterClass = findViewById(R.id.character_class);
         mTextViewCharacterClass.setText(mCurrentCharacter.getCharacterClass().toString());
 
-        TextView mHPMaxScore = findViewById(R.id.hp_max_score);
-        mHPCurrentScore = findViewById(R.id.hp_cur_score);
+        mHPMaxScore = findViewById(R.id.hp_max_textview);
+        mHPCurrentScore = findViewById(R.id.hp_cur_textview);
         TextView mACScore = findViewById(R.id.AC_score);
 
         Log.d("PAGE2", "onCreate: total HP = "+ Integer.toString(totHP));
-        mHPMaxScore.setText(Integer.toString(totHP));
-        mHPCurrentScore.setText(Integer.toString(mCurrentCharacter.getCurrentHitPoints()));
+        mHPMaxScore.setText(getString(R.string.hp_max, mCurrentCharacter.getTotalHitPoints()));
+        mHPCurrentScore.setText(getString(R.string.hp_cur, mCurrentCharacter.getCurrentHitPoints()));
         mHPCurrentScore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -133,7 +134,7 @@ public class CombatActivity extends AppCompatActivity implements CurHPDialog.Cur
 
     public void openCurHPDialog(){
         CurHPDialog curHPDialog = new CurHPDialog();
-        curHPDialog.show(getSupportFragmentManager(), "XP dialog");
+        curHPDialog.show(getSupportFragmentManager(), "HP dialog");
     }
 
     @Override
@@ -142,31 +143,12 @@ public class CombatActivity extends AppCompatActivity implements CurHPDialog.Cur
         int currentHP = mCurrentCharacter.getCurrentHitPoints();
         //needed for later: the rule of not allowing more than 1 level gain at a time
         //int currentLevel = mCurrentCharacter.getLevel();
-        int newLevel = 0;
         currentHP += hp;
+        if (currentHP > mCurrentCharacter.getTotalHitPoints()){
+            currentHP = mCurrentCharacter.getTotalHitPoints();
+        }
         mCurrentCharacter.setCurrentHitPoints(currentHP);
-        //mTextViewCharacterXP.setText(getString(R.string.xp_string, mCurrentCharacter.getXP()));
-        //Log.d(TAG, "applyXP: " + String.valueOf(currentXP));
-        int[] levelArray = {};
-        switch (mCurrentCharacter.getCharacterClass()){
-            case THIEF: levelArray = r.getIntArray(R.array.THIEF_LEVELS);
-                break;
-            case CLERIC: levelArray = r.getIntArray(R.array.CLERIC_LEVELS);
-                break;
-            case FIGHTER: levelArray = r.getIntArray(R.array.FIGHTER_LEVELS);
-                break;
-            case MAGIC_USER: levelArray = r.getIntArray(R.array.MAGICUSER_LEVELS);
-                break;
-            case MU_THIEF: levelArray = r.getIntArray(R.array.MU_THIEF_LEVELS);
-                break;
-            case FIGHTER_MU: levelArray = r.getIntArray(R.array.FIGHTER_MU_LEVELS);
-                break;
-        }
-        for(int i=0; i < levelArray.length-1; i++){
-            newLevel = 20;
+        mHPCurrentScore.setText(getString(R.string.hp_cur, mCurrentCharacter.getCurrentHitPoints()));
 
-        }
-        mCurrentCharacter.setLevel(newLevel);
-        //mTextViewCharacterLevel.setText(String.valueOf(newLevel));
     }
 }

@@ -25,10 +25,10 @@ public class CurHPDialog extends AppCompatDialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        View view = inflater.inflate(R.layout.layout_xp_dialog, null);
+        View view = inflater.inflate(R.layout.layout_cur_hp_dialog, null);
 
         builder.setView(view)
-                .setTitle("Add Experience")
+                .setTitle("Current Hit Points")
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -38,13 +38,24 @@ public class CurHPDialog extends AppCompatDialogFragment {
                 .setPositiveButton("Apply Change", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        int hp = Integer.valueOf(mEditTextHP.getText().toString());
+                        mButtonHeal = view.findViewById(R.id.heal_button);
+                        mButtonDamage = view.findViewById(R.id.damage_button);
+                        int hp = 0;
+
+                        if (mButtonHeal.isChecked()) {
+                            hp = Integer.valueOf(mEditTextHP.getText().toString());
+                        }
+
+                        if (mButtonDamage.isChecked()) {
+                            hp = -(Integer.valueOf(mEditTextHP.getText().toString()));
+                        }
+
                         listener.applyHP(hp);
 
                     }
                 });
 
-        mEditTextHP = view.findViewById(R.id.edit_xp);
+        mEditTextHP = view.findViewById(R.id.edit_hp);
         mButtonHeal = view.findViewById(R.id.heal_button);
         mButtonDamage = view.findViewById(R.id.damage_button);
 
