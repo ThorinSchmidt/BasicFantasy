@@ -146,6 +146,7 @@ public class CombatActivity extends AppCompatActivity implements CurHPDialog.Cur
         currentHP += hp;
         if (currentHP > mCurrentCharacter.getTotalHitPoints()){
             currentHP = mCurrentCharacter.getTotalHitPoints();
+            Log.d("wow", "wowee");
         }
         mCurrentCharacter.setCurrentHitPoints(currentHP);
         mHPCurrentScore.setText(getString(R.string.hp_cur, mCurrentCharacter.getCurrentHitPoints()));
