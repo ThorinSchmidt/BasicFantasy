@@ -10,4 +10,5 @@
     <color name="green">#00FF00</color>
     <color name="dark_green">#006400</color>
     <color name="light_gray">#D3D3D3</color>
+    <color name="weapon_backgroud">#ffa500</color>
 </resources>

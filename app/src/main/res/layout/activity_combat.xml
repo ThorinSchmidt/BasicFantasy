@@ -148,6 +148,49 @@
             android:background="@color/black" />
 
         <TableRow
+            android:id="@+id/weapon_heading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:textAlignment="center"
+            android:background="@drawable/customborder_weapon_heading">
+
+            <TextView
+                android:id="@+id/weapon_heading_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="10dp"
+                android:gravity="start"
+                android:text="@string/name"
+                android:textColor="@color/weapon_backgroud"
+                android:textSize="24sp"
+                tools:ignore="RtlSymmetry" />
+
+            <TextView
+                android:id="@+id/weapon_heading_tohit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:textColor="@color/weapon_backgroud"
+                android:textSize="24sp"
+                android:text= "Hit Bonus" />
+
+            <TextView
+                android:id="@+id/weapon_heading_damage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingEnd="10dp"
+                android:gravity="end"
+                android:textColor="@color/weapon_backgroud"
+                android:textSize="24sp"
+                android:text= "@string/damage"
+                tools:ignore="RtlSymmetry" />
+
+        </TableRow>
+
+        <TableRow
             android:id="@+id/weapon_row1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.lewisandclark.csd.basicfantasy.model.CharacterList;
 import org.lewisandclark.csd.basicfantasy.model.EquipmentDatabase;
@@ -90,9 +91,32 @@ public class CombatActivity extends AppCompatActivity implements CurHPDialog.Cur
                 findViewById(R.id.weapon_5_damage)};
 
         int index = 0;
+        int meleeAttack = mCurrentCharacter.getMeleeAttackBonus();
+        int rangedAttack = mCurrentCharacter.getRangedAttackBonus();
+        int toHitBonus = 0;
+        int damageBonus = 0;
+        String meleeDamageSign = "+";
+        if (mCurrentCharacter.getMeleeDamageBonus()< 0){
+            meleeDamageSign = "-";
+        }
+        String damageString = "";
         for(Item item : mCurrentCharacter.getEquipmentList()){
             if(item instanceof Weapon && index < 5){
                 mWeaponNameArray[index].setText(item.getNameID());
+                if(((Weapon) item).isRanged()){
+                    toHitBonus = ((Weapon) item).getAttackBonus() + rangedAttack;
+                    damageString = getString(R.string.weapon_damage_string,
+                             ((Weapon) item).getDamageDie(), "+",
+                            ((Weapon) item).getAttackBonus());
+                }
+                else {
+                    toHitBonus = ((Weapon) item).getAttackBonus() + meleeAttack;
+                    damageString = getString(R.string.weapon_damage_string,
+                            ((Weapon) item).getDamageDie(), meleeDamageSign,
+                            Math.abs(((Weapon) item).getAttackBonus()+mCurrentCharacter.getMeleeDamageBonus()));
+                }
+                mWeaponToHitArray[index].setText(Integer.toString(toHitBonus));
+                mWeaponDamageArray[index].setText(damageString);
                 index++;
                 Log.d("EQUIPPED WEAPON", item.getNameID());
             }
@@ -146,10 +170,16 @@ public class CombatActivity extends AppCompatActivity implements CurHPDialog.Cur
         currentHP += hp;
         if (currentHP > mCurrentCharacter.getTotalHitPoints()){
             currentHP = mCurrentCharacter.getTotalHitPoints();
-            Log.d("wow", "wowee");
         }
         mCurrentCharacter.setCurrentHitPoints(currentHP);
         mHPCurrentScore.setText(getString(R.string.hp_cur, mCurrentCharacter.getCurrentHitPoints()));
 
+    }
+
+    @Override
+    public void fullHP(){
+        mCurrentCharacter.setCurrentHitPoints(mCurrentCharacter.getTotalHitPoints());
+        mHPCurrentScore.setText(getString(R.string.hp_cur, mCurrentCharacter.getCurrentHitPoints()));
+        Toast.makeText(this, "Full Health Restored", Toast.LENGTH_SHORT).show();
     }
 }

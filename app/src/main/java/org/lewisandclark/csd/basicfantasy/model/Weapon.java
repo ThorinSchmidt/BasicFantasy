@@ -31,9 +31,10 @@ public class Weapon extends Item {
         mLongRange = 0;
     }
 
-    public Weapon(String nameID, double costInGP, double weight,int damageDie, int quantity,
-                 int AB, int SecondAB, String ABTarget, boolean twoHand, boolean ranged,
-                  int shortRange, int mediumRange, int longRange, String formalName) {
+    public Weapon(String nameID, double costInGP, double weight, int damageDie,
+                  int quantity, int AB, int SecondAB, String ABTarget, boolean twoHand,
+                  boolean ranged, int shortRange, int mediumRange, int longRange,
+                  String formalName) {
         super(nameID, formalName, weight, costInGP, quantity);
         mAttackBonus = AB;
         mDamageDie = damageDie;

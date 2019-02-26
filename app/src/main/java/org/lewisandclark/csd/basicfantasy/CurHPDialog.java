@@ -53,6 +53,12 @@ public class CurHPDialog extends AppCompatDialogFragment {
                         listener.applyHP(hp);
 
                     }
+                })
+                .setNeutralButton("Full Heatlh", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        listener.fullHP();
+                    }
                 });
 
         mEditTextHP = view.findViewById(R.id.edit_hp);
@@ -75,5 +81,6 @@ public class CurHPDialog extends AppCompatDialogFragment {
 
     public interface CurHPDialogListener{
         void applyHP(int hp);
+        void fullHP();
     }
 }

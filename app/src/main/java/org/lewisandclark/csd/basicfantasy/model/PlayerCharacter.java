@@ -50,6 +50,7 @@ public class PlayerCharacter {
     private int mBaseAttackBonus;
     private int mMeleeAttackBonus;
     private int mRangedAttackBonus;
+    private int mMeleeDamageBonus;
 
     private int mBaseMovement;
     private int mCurrentMovement;
@@ -126,7 +127,7 @@ public class PlayerCharacter {
         this.mAbilityRoll = 18;
 
         this.mStatRollCounter = 1;
-        this.mStatArray[STR.ordinal()] = new AttributeScore(9);
+        this.mStatArray[STR.ordinal()] = new AttributeScore(7);
         this.mStatArray[INT.ordinal()] = new AttributeScore(17);
         this.mStatArray[WIS.ordinal()] = new AttributeScore(12);
         this.mStatArray[DEX.ordinal()] = new AttributeScore(15);
@@ -154,6 +155,7 @@ public class PlayerCharacter {
         mBaseAttackBonus = ATTACK_BONUS_MATRIX[mPlayerClass.ordinal()][mLevel];
         mMeleeAttackBonus = mBaseAttackBonus + mStatArray[STR.ordinal()].getModifier();
         mRangedAttackBonus = mBaseAttackBonus + mStatArray[DEX.ordinal()].getModifier();
+        mMeleeDamageBonus = mStatArray[STR.ordinal()].getModifier();
         this.mEquipmentList.add(new Weapon()); //adds entry to "Fists"
         this.mEquipmentList.add(new Weapon("Hand Axe", 4, 5, 6, 1, 0,
                 0, "", false, false, 0, 0,
@@ -388,6 +390,14 @@ public class PlayerCharacter {
 
     public void setRangedAttackBonus(int rangedAttackBonus) {
         mRangedAttackBonus = rangedAttackBonus;
+    }
+
+    public int getMeleeDamageBonus() {
+        return mMeleeDamageBonus;
+    }
+
+    public void setMeleeDamageBonus(int mMeleeDamageBonus) {
+        this.mMeleeDamageBonus = mMeleeDamageBonus;
     }
 
     public int getBaseMovement() {

@@ -79,6 +79,7 @@
     <string name="weapon3">Weapon 3</string>
     <string name="weapon4">Weapon 4</string>
     <string name="weapon5">Weapon 5</string>
+    <string name="weapon_damage_string">1d%1$d%2$s%3$d</string>
     <string name="weapon_screen_add_weapon">Add Weapon</string>
     <string name="weapons">Weapons</string>
     <string name="max">MAX:</string>
