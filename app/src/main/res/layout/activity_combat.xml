@@ -206,9 +206,9 @@
                 android:layout_height="wrap_content"
                 android:paddingStart="10dp"
                 android:gravity="start"
-                android:text="@string/weapon1"
                 android:textColor="@color/black"
                 android:textSize="24sp"
+                tools:text="@string/weapon1"
                 tools:ignore="RtlSymmetry" />
 
             <TextView
@@ -249,9 +249,9 @@
                 android:layout_height="wrap_content"
                 android:paddingStart="10dp"
                 android:gravity="start"
-                android:text="@string/weapon2"
                 android:textColor="@color/black"
                 android:textSize="24sp"
+                tools:text="@string/weapon2"
                 tools:ignore="RtlSymmetry" />
 
             <TextView
@@ -291,9 +291,9 @@
                 android:layout_height="wrap_content"
                 android:paddingStart="10dp"
                 android:gravity="start"
-                android:text="@string/weapon3"
                 android:textColor="@color/black"
                 android:textSize="24sp"
+                tools:text="@string/weapon3"
                 tools:ignore="RtlSymmetry" />
 
             <TextView
@@ -333,9 +333,9 @@
                 android:layout_height="wrap_content"
                 android:paddingStart="10dp"
                 android:gravity="start"
-                android:text="@string/weapon4"
                 android:textColor="@color/black"
                 android:textSize="24sp"
+                tools:text="@string/weapon4"
                 tools:ignore="RtlSymmetry" />
 
             <TextView
@@ -375,9 +375,9 @@
                 android:layout_height="wrap_content"
                 android:paddingStart="10dp"
                 android:gravity="start"
-                android:text="@string/weapon5"
                 android:textColor="@color/black"
                 android:textSize="24sp"
+                tools:text="@string/weapon5"
                 tools:ignore="RtlSymmetry" />
 
             <TextView

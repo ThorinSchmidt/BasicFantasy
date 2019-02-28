@@ -1,12 +1,18 @@
 package org.lewisandclark.csd.basicfantasy;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,6 +22,7 @@ import org.lewisandclark.csd.basicfantasy.model.EquipmentDatabase;
 import org.lewisandclark.csd.basicfantasy.model.Item;
 import org.lewisandclark.csd.basicfantasy.model.PlayerCharacter;
 import org.lewisandclark.csd.basicfantasy.model.Weapon;
+import org.lewisandclark.csd.basicfantasy.utils.DieRoller;
 
 import java.util.ArrayList;
 
@@ -27,6 +34,18 @@ public class CombatActivity extends AppCompatActivity implements CurHPDialog.Cur
     private PlayerCharacter mCurrentCharacter = sCharacters.getPlayerCharacter(sCurrentCharacterIndex);
     private TextView mHPCurrentScore;
     private TextView mHPMaxScore;
+
+    private TableRow mWeapon1;
+    private TableRow mWeapon2;
+    private TableRow mWeapon3;
+    private TableRow mWeapon4;
+    private TableRow mWeapon5;
+
+    private TextView[] mWeaponNameArray;
+    private TextView[] mWeaponToHitArray;
+    private TextView[] mWeaponDamageArray;
+
+    private int[] mWeaponDamageDieArray = {0,0,0,0,0};
 
     public static Intent newIntent(Context packageContext) {
         //Intent Extras go here
@@ -63,27 +82,32 @@ public class CombatActivity extends AppCompatActivity implements CurHPDialog.Cur
         });
         mACScore.setText(Integer.toString(mCurrentCharacter.getArmorClass()));
 
-        TableRow mWeapon1 = findViewById(R.id.weapon_row1);
-        TableRow mWeapon2 = findViewById(R.id.weapon_row2);
-        TableRow mWeapon3 = findViewById(R.id.weapon_row3);
-        TableRow mWeapon4 = findViewById(R.id.weapon_row4);
-        TableRow mWeapon5 = findViewById(R.id.weapon_row5);
+        mWeapon1 = findViewById(R.id.weapon_row1);
+        mWeapon1.setOnClickListener(view -> weaponAttack(0));
+        mWeapon2 = findViewById(R.id.weapon_row2);
+        mWeapon2.setOnClickListener(view -> weaponAttack(1));
+        mWeapon3 = findViewById(R.id.weapon_row3);
+        mWeapon3.setOnClickListener(view -> weaponAttack(2));
+        mWeapon4 = findViewById(R.id.weapon_row4);
+        mWeapon4.setOnClickListener(view -> weaponAttack(3));
+        mWeapon5 = findViewById(R.id.weapon_row5);
+        mWeapon5.setOnClickListener(view -> weaponAttack(4));
 
-        TextView[] mWeaponNameArray = new TextView[]{
+        mWeaponNameArray = new TextView[]{
                 findViewById(R.id.weapon_1_name),
                 findViewById(R.id.weapon_2_name),
                 findViewById(R.id.weapon_3_name),
                 findViewById(R.id.weapon_4_name),
                 findViewById(R.id.weapon_5_name)};
 
-        TextView[] mWeaponToHitArray = new TextView[]{
+        mWeaponToHitArray = new TextView[]{
                 findViewById(R.id.weapon_1_tohit),
                 findViewById(R.id.weapon_2_tohit),
                 findViewById(R.id.weapon_3_tohit),
                 findViewById(R.id.weapon_4_tohit),
                 findViewById(R.id.weapon_5_tohit)};
 
-        TextView[] mWeaponDamageArray = new TextView[]{
+        mWeaponDamageArray = new TextView[]{
                 findViewById(R.id.weapon_1_damage),
                 findViewById(R.id.weapon_2_damage),
                 findViewById(R.id.weapon_3_damage),
@@ -96,6 +120,7 @@ public class CombatActivity extends AppCompatActivity implements CurHPDialog.Cur
         int toHitBonus = 0;
         int damageBonus = 0;
         String meleeDamageSign = "+";
+        String dieValues = "";
         if (mCurrentCharacter.getMeleeDamageBonus()< 0){
             meleeDamageSign = "-";
         }
@@ -117,11 +142,14 @@ public class CombatActivity extends AppCompatActivity implements CurHPDialog.Cur
                 }
                 mWeaponToHitArray[index].setText(Integer.toString(toHitBonus));
                 mWeaponDamageArray[index].setText(damageString);
+                mWeaponDamageDieArray[index]=((Weapon) item).getDamageDie();
+                dieValues += Integer.toString(mWeaponDamageDieArray[index])+":";
                 index++;
                 Log.d("EQUIPPED WEAPON", item.getNameID());
             }
         }
 
+        Log.d("DAMAGE DIE ARRAY", dieValues);
 
         TextView mTextViewLeftNavigate = findViewById(R.id.left_button);
         TextView mTextViewRightNavigate = findViewById(R.id.right_button);
@@ -145,8 +173,66 @@ public class CombatActivity extends AppCompatActivity implements CurHPDialog.Cur
                 overridePendingTransition(R.anim.right_to_left_in, R.anim.right_to_left_out);
             }
         });
+    }
+
+    public void weaponAttack(int index){
 
     }
+
+    public void openWeaponDialog(String title, int attackMod, int damageDie, int damageMod){
+
+        int attackRoll = DieRoller.d20();
+        int damageRoll = DieRoller.roll(damageDie);
+
+        String attackModString;
+        String damageModString;
+
+        if (attackMod > -1){
+            attackModString = "+";
+        }
+        else {
+            attackModString = "-";
+        }
+
+        if (damageMod > -1){
+            damageModString = "+";
+        }
+        else {
+            damageModString = "-";
+        }
+
+        AlertDialog weaponDialog = new AlertDialog.Builder(this).create();
+
+        TextView mTextViewTitle = new TextView(this);
+        mTextViewTitle.setText(title);
+        mTextViewTitle.setPadding(3, 3, 3, 10);
+        mTextViewTitle.setGravity(Gravity.CENTER);
+        mTextViewTitle.setTextColor(Color.BLUE);
+        mTextViewTitle.setTextSize(20);
+        weaponDialog.setCustomTitle(mTextViewTitle);
+
+        TextView msg = new TextView(this);
+
+        msg.setText(getString(R.string.attack_msg, attackRoll, attackModString, attackMod, attackRoll+attackMod, damageRoll, damageModString, damageMod, damageRoll+damageMod));
+        msg.setGravity(Gravity.CENTER_HORIZONTAL);
+        msg.setTextColor(Color.BLACK);
+        msg.setTextSize(18);
+        weaponDialog.setView(msg);
+
+        weaponDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK", (dialogInterface, i) -> {
+            //no action to perform
+        });
+
+        new Dialog(getApplicationContext());
+        weaponDialog.show();
+
+        //set properties of the OK button
+        final Button okButton = weaponDialog.getButton(AlertDialog.BUTTON_NEUTRAL);
+        LinearLayout.LayoutParams neutralButtonLP = (LinearLayout.LayoutParams) okButton.getLayoutParams();
+        okButton.setTextColor(Color.BLUE);
+        okButton.setLayoutParams(neutralButtonLP);
+    }
+
 
     public void onBackPressed(){
         Log.d("BUTTON", "pressed BACK button.");
