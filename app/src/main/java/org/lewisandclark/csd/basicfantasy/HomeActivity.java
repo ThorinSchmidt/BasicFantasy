@@ -16,10 +16,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.lewisandclark.csd.basicfantasy.model.CharacterClass;
 import org.lewisandclark.csd.basicfantasy.model.CharacterList;
 import org.lewisandclark.csd.basicfantasy.model.EquipmentDatabase;
+import org.lewisandclark.csd.basicfantasy.model.Gender;
 import org.lewisandclark.csd.basicfantasy.model.Item;
 import org.lewisandclark.csd.basicfantasy.model.PlayerCharacter;
+import org.lewisandclark.csd.basicfantasy.model.Race;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -50,19 +53,13 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        Log.d("HOME","Character Array is size: " +
-                sCharacters.getList().size());
         Item testItem = sEquipmentDatabase.getEquipment("Hand Axe");
-        Log.d("EQUIPMENT", testItem.getNameID());
         sCurrentCharacterIndex =
                 getIntent().getIntExtra("HomeActivityIndex", 0);
 
         if (sCharacters.getList().size() == 0) {
-            Log.d("HOME", "Size is Zero.");
-            sCharacters.addCharacter(new PlayerCharacter());
-            sCharacters.addCharacter(new PlayerCharacter("Marcia of Xant"));
+            createPreGens();
             mCurrentCharacter = sCharacters.getPlayerCharacter(0);
-            //mCurrentCharacter.addEquipment(sWeapons.);
             sCharacters.updateCharacter(mCurrentCharacter,0);
         }
 
@@ -165,4 +162,8 @@ public class HomeActivity extends AppCompatActivity {
         okButton.setLayoutParams(neutralButtonLP);
     }
 
+    public void createPreGens(){
+        PlayerCharacter Darion = new PlayerCharacter("Darion", Race.HUMAN, Gender.MALE, CharacterClass.FIGHTER,
+                16, 9, 8, 13, 13, 11, 6, 7);
+    }
 }

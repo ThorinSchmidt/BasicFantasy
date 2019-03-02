@@ -27,14 +27,15 @@ public class PlayerCharacter {
     private int ID;
     private String mName;
     private Gender mSex;
-    private int mHeight;
-    private int mWeight;
-    private int mAge;
+    //private int mHeight;
+    //private int mWeight;
+    //private int mAge;
+    //private String mEyeColor;
     private int mLevel;
     private int mXP;
     private Race mRace;
     private CharacterClass mPlayerClass;
-    private String mEyeColor;
+
 
     private int mStatRollCounter;
     private AttributeScore[] mStatArray = new AttributeScore[6]; //[STR,INT,WIS,DEX,CON,CHA]
@@ -79,6 +80,53 @@ public class PlayerCharacter {
     }
 
     /**
+     * Pregen Constructor
+     */
+    public PlayerCharacter(String name, Race race, Gender sex, CharacterClass characterClass,
+                           int str, int intelligence, int wis, int dex, int con, int cha, int hp,
+                           int gp){
+        this.mName = name;
+        this.mRace = race;
+        this.mSex = sex;
+        this.mPlayerClass = characterClass;
+        this.mLevel = 1;
+        this.mXP = 0;
+        this.mTotalHitPoints = hp;
+        this.mCurrentHitPoints = hp;
+        this.mAbilityRoll = 18;
+        this.mMoneyArray[Money.PP.ordinal()] = 0;
+        this.mMoneyArray[Money.GP.ordinal()] = gp;
+        this.mMoneyArray[Money.EP.ordinal()] = 0;
+        this.mMoneyArray[Money.CP.ordinal()] = 0;
+
+
+        switch (mPlayerClass){
+            case FIGHTER:  this.mHitDie = 8;
+                            if (mRace == Race.ELF || mRace ==  Race.HALFLING){
+                                this.mHitDie = 6;
+                            }
+                            break;
+            case FIGHTER_MU:
+            case CLERIC:    this.mHitDie = 6;
+                            break;
+            case MAGIC_USER:
+            case MU_THIEF:
+            case THIEF:     this.mHitDie = 4;
+                            break;
+        }
+
+        this.mStatRollCounter = 1;
+        this.mStatArray[STR.ordinal()] = new AttributeScore(str);
+        this.mStatArray[INT.ordinal()] = new AttributeScore(intelligence);
+        this.mStatArray[WIS.ordinal()] = new AttributeScore(wis);
+        this.mStatArray[DEX.ordinal()] = new AttributeScore(dex);
+        this.mStatArray[CON.ordinal()] = new AttributeScore(con);
+        this.mStatArray[CHA.ordinal()] = new AttributeScore(cha);
+        this.autoCalc();
+    }
+
+
+    /**
      * Generic Constructor for testing
      */
     public PlayerCharacter(){
@@ -86,15 +134,16 @@ public class PlayerCharacter {
         this.mSex = Gender.MALE;
         this.mRace = Race.HUMAN;
         this.mPlayerClass = CharacterClass.FIGHTER;
-        this.mAge = 20;
-        this.mHeight = 76;
-        this.mWeight = 220;
+        //this.mAge = 20;
+        //this.mHeight = 76;
+        //this.mWeight = 220;
+        //this.mEyeColor = "Green";
         this.mLevel = 1;
         this.mXP = 0;
         this.mHitDie = 8;
         this.mTotalHitPoints = 8;
         this.mCurrentHitPoints = 8;
-        this.mEyeColor = "Green";
+
         this.mAbilityRoll = 18;
 
         this.mStatRollCounter = 1;
@@ -115,15 +164,17 @@ public class PlayerCharacter {
         this.mSex = Gender.FEMALE;
         this.mRace = Race.ELF;
         this.mPlayerClass = CharacterClass.MAGIC_USER;
-        this.mAge = 120;
-        this.mHeight = 65;
-        this.mWeight = 100;
+        //this.mAge = 120;
+        //this.mHeight = 65;
+        //this.mWeight = 100;
+        //this.mEyeColor = "Blue";
+        //this.mHairColor = "Brown";
         this.mLevel = 1;
         this.mXP = 0;
         this.mHitDie = 4;
         this.mTotalHitPoints = 0;
         this.mCurrentHitPoints = 0;
-        this.mEyeColor = "Blue";
+
         this.mAbilityRoll = 18;
 
         this.mStatRollCounter = 1;
@@ -140,12 +191,6 @@ public class PlayerCharacter {
         int[] saveArray;
         //total hit points
         if(this.mTotalHitPoints == 0){
-            for(int i=0; i<this.mLevel; i++){
-                this.mTotalHitPoints += DieRoller.roll(this.mHitDie) +
-                    this.mStatArray[CON.ordinal()].getModifier();
-            }
-        }
-        else{
             this.mTotalHitPoints += DieRoller.roll(this.mHitDie) +
                     Integer.valueOf(this.mStatArray[CON.ordinal()].getModifier());
         }
@@ -157,9 +202,6 @@ public class PlayerCharacter {
         mRangedAttackBonus = mBaseAttackBonus + mStatArray[DEX.ordinal()].getModifier();
         mMeleeDamageBonus = mStatArray[STR.ordinal()].getModifier();
         this.mEquipmentList.add(new Weapon()); //adds entry to "Fists"
-        this.mEquipmentList.add(new Weapon("Hand Axe", 4, 5, 6, 1, 0,
-                0, "", false, false, 0, 0,
-                0, ""));
         this.mEquippedWeapon = (Weapon) this.mEquipmentList.get(0);
 
         //Armor Class and Armor
@@ -250,7 +292,7 @@ public class PlayerCharacter {
         mSex = sex;
     }
 
-    public String getEyeColor() {return mEyeColor;}
+    /*public String getEyeColor() {return mEyeColor;}
 
     public void setEyeColor(String eyeColor) {mEyeColor = eyeColor;}
 
@@ -276,7 +318,7 @@ public class PlayerCharacter {
 
     public void setAge(int age) {
         mAge = age;
-    }
+    }*/
 
     public int getLevel() {
         return mLevel;
