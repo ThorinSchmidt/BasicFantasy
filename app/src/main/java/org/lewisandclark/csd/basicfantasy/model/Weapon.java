@@ -18,7 +18,7 @@ public class Weapon extends Item {
     private int mLongRange;
 
     public Weapon(){
-        super("Fists", "", 0, 0, 1);
+        super("Fists", 0, 0, 1);
         super.setEquipped(true);
         mAttackBonus = 0;
         mDamageDie = 3;
@@ -35,7 +35,7 @@ public class Weapon extends Item {
                   int quantity, int AB, int SecondAB, String ABTarget, boolean twoHand,
                   boolean ranged, int shortRange, int mediumRange, int longRange,
                   String formalName) {
-        super(nameID, formalName, weight, costInGP, quantity);
+        super(nameID, weight, costInGP, quantity);
         mAttackBonus = AB;
         mDamageDie = damageDie;
         mSecondAttackBonus = SecondAB;

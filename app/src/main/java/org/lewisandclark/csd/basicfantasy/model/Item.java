@@ -8,7 +8,6 @@ package org.lewisandclark.csd.basicfantasy.model;
 
 public class Item {
     private String mNameID;           //the common name of the item - "sword"
-    private String mFormalName;     //a more formal name for a specific item - "Excalibur"
     private double mWeight;         //the weight of a single item
     private double mCostInGP;       //cost of a single item
     private int mQuantity;          //how much of the item a character has
@@ -16,7 +15,6 @@ public class Item {
 
     public Item(){
         mNameID = "thing";
-        mFormalName = "";
         mWeight = 0;
         mCostInGP = 0;
         mQuantity = 1;
@@ -27,14 +25,12 @@ public class Item {
      * Constructor
      *
      * @param nameID              the common name of the item - "sword"
-     * @param formalName        a more formal name for a specific item - "Excalibur"
      * @param weight            factors into how much a character can carry
      * @param costInGP          cost of a single item
      * @param quantity          how much of the item a character has
      */
-    public Item(String nameID, String formalName, double weight, double costInGP, int quantity) {
-        mNameID = nameID;
-        mFormalName = formalName;
+    public Item(String nameID, double weight, double costInGP, int quantity) {
+        mNameID = nameID;;
         mWeight = weight;
         mCostInGP = costInGP;
         mQuantity = quantity;
@@ -47,14 +43,6 @@ public class Item {
 
     public void setName(String nameID) {
         mNameID = nameID;
-    }
-
-    public String getFormalName() {
-        return mFormalName;
-    }
-
-    public void setFormalName(String formalName) {
-        mFormalName = formalName;
     }
 
     public double getWeight() {

@@ -75,11 +75,11 @@ public class DetailedCharacterSheetActivity extends AppCompatActivity {
         mTextViewCurrentCharacterName.setText(mCurrentCharacter.getName());
         mTextViewCurrentCharacterClass.setText(mCurrentCharacter.getCharacterClass().getResId());
         mTextViewCurrentCharacterRace.setText(mCurrentCharacter.getRace().getResId());
-        mTextViewCurrentCharacterAge.setText(String.valueOf(mCurrentCharacter.getAge()));
-        mTextViewCurrentCharacterHeight.setText(String.valueOf(mCurrentCharacter.getHeight()));
-        mTextViewCurrentCharacterWeight.setText(String.valueOf(mCurrentCharacter.getWeight()));
-        mTextViewCurrentCharacterEyeColor.setText(mCurrentCharacter.getEyeColor());
-        mTextViewCurrentCharacterHeight.setText(String.valueOf(mCurrentCharacter.getHeight()));
-        mTextViewCurrentCharacterWeight.setText(String.valueOf(mCurrentCharacter.getWeight()));
+        //mTextViewCurrentCharacterAge.setText(String.valueOf(mCurrentCharacter.getAge()));
+        //mTextViewCurrentCharacterHeight.setText(String.valueOf(mCurrentCharacter.getHeight()));
+        //mTextViewCurrentCharacterWeight.setText(String.valueOf(mCurrentCharacter.getWeight()));
+        //mTextViewCurrentCharacterEyeColor.setText(mCurrentCharacter.getEyeColor());
+        //mTextViewCurrentCharacterHeight.setText(String.valueOf(mCurrentCharacter.getHeight()));
+        //mTextViewCurrentCharacterWeight.setText(String.valueOf(mCurrentCharacter.getWeight()));
     }
 }

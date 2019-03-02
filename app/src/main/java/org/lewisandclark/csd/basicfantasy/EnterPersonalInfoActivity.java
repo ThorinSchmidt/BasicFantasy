@@ -97,11 +97,11 @@ public class EnterPersonalInfoActivity extends AppCompatActivity {
                 //count 0
                 newOne.setName(mEditName.getText().toString());
                 count++; //count 1
-                newOne.setAge(Integer.parseInt(mEditAge.getText().toString()));
+                //newOne.setAge(Integer.parseInt(mEditAge.getText().toString()));
                 count++;
-                newOne.setHeight(Integer.parseInt(mEditHeight.getText().toString()));
+                //newOne.setHeight(Integer.parseInt(mEditHeight.getText().toString()));
                 count++;
-                newOne.setWeight(Integer.parseInt(mEditWeight.getText().toString()));
+                //newOne.setWeight(Integer.parseInt(mEditWeight.getText().toString()));
                 count++;
                 newOne.setName(mEditEyeColor.getText().toString());
                 count++;

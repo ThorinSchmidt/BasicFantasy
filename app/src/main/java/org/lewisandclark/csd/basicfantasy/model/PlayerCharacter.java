@@ -207,8 +207,8 @@ public class PlayerCharacter {
         //Armor Class and Armor
         this.mEquipmentList.add(new Armor());  //adds entry for "No Armor"
         this.mEquipmentList.add(new Shield()); // adds entry for "No Shield"
-        this.mEquippedArmor = (Armor) this.mEquipmentList.get(2);
-        this.mEquippedShield = (Shield) this.mEquipmentList.get(3);
+        this.mEquippedArmor = (Armor) this.mEquipmentList.get(1);
+        this.mEquippedShield = (Shield) this.mEquipmentList.get(2);
 
         //Saves
         switch (this.mPlayerClass){
@@ -574,5 +574,12 @@ public class PlayerCharacter {
 
     public void addEquipment(Item item){
         this.mEquipmentList.add(item);
+    }
+
+    public ArrayList<Item> findEquipmentByType(ItemType type){
+
+        ArrayList<Item> items = null;
+
+        return items;
     }
 }

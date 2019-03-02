@@ -165,5 +165,6 @@ public class HomeActivity extends AppCompatActivity {
     public void createPreGens(){
         PlayerCharacter Darion = new PlayerCharacter("Darion", Race.HUMAN, Gender.MALE, CharacterClass.FIGHTER,
                 16, 9, 8, 13, 13, 11, 6, 7);
+        sCharacters.addCharacter(Darion);
     }
 }
