@@ -76,7 +76,7 @@ public class BuyWeaponsActivity extends AppCompatActivity {
             for(int i = 0; i< mWeaponCheckedTextViews.size(); i++){
                 if(mWeaponCheckedTextViews.get(i).isChecked()){
                     sCharacters.getPlayerCharacter(sCurrentCharacterIndex).
-                            addEquipment(sEquipmentDatabase.getEquipment((String) mWeaponCheckedTextViews.get(i).getText()));
+                            addEquipment(sEquipmentDatabase.getEquipment((String) mWeaponCheckedTextViews.get(i).getText()),true);
                 }
             }
             logIt();

@@ -59,9 +59,10 @@ public class HomeActivity extends AppCompatActivity {
 
         if (sCharacters.getList().size() == 0) {
             createPreGens();
-            mCurrentCharacter = sCharacters.getPlayerCharacter(0);
-            sCharacters.updateCharacter(mCurrentCharacter,0);
         }
+        mCurrentCharacter = sCharacters.getPlayerCharacter(0);
+        sCharacters.updateCharacter(mCurrentCharacter,0);
+
 
         Log.d("HOME", "Current character index: " + Integer.toString(sCurrentCharacterIndex));
         Log.d("HOME", "Character Array Size: "+ Integer.toString(sCharacters.getList().size()));
@@ -165,6 +166,11 @@ public class HomeActivity extends AppCompatActivity {
     public void createPreGens(){
         PlayerCharacter Darion = new PlayerCharacter("Darion", Race.HUMAN, Gender.MALE, CharacterClass.FIGHTER,
                 16, 9, 8, 13, 13, 11, 6, 7);
+        Darion.addEquipment(sEquipmentDatabase.getEquipment("Longsword"), true);
+        PlayerCharacter Morningstar = new PlayerCharacter("Morningstar", Race.ELF, Gender.FEMALE, CharacterClass.FIGHTER_MU,
+                15, 14, 14, 7, 11, 15, 5, 3);
+        Morningstar.addEquipment(sEquipmentDatabase.getEquipment("Longsword"), true);
         sCharacters.addCharacter(Darion);
+        sCharacters.addCharacter(Morningstar);
     }
 }

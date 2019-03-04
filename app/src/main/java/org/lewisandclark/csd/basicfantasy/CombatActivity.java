@@ -176,6 +176,8 @@ public class CombatActivity extends AppCompatActivity implements CurHPDialog.Cur
     }
 
     public void weaponAttack(int index){
+        String msg = "Attacked with " + mWeaponNameArray[index].getText();
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
 
     }
 

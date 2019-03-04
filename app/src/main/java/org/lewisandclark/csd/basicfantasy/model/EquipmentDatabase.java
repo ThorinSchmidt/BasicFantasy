@@ -92,15 +92,15 @@ public class EquipmentDatabase {
     private ArrayList<Armor> buildArmorList() {
         ArrayList<Armor> armorList = new ArrayList<>();
 
-        armorList.add(new Armor("Padded","",10,15,1,
+        armorList.add(new Armor("Padded",10,15,1,
                 12,12,0,0));
-        armorList.add(new Armor("Hide","",30,10,1,
+        armorList.add(new Armor("Hide",30,10,1,
                 13,13,0,0));
-        armorList.add(new Armor("Leather","",15,20,1,
+        armorList.add(new Armor("Leather",15,20,1,
                 13,13,0,0));
-        armorList.add(new Armor("Studded Leather","",25,30,1,
+        armorList.add(new Armor("Studded Leather",25,30,1,
                 14,14,0,0));
-        armorList.add(new Armor("Ring Mail","",30,25,1,
+        armorList.add(new Armor("Ring Mail",30,25,1,
                 14,14,0,0));
         /*armorList.add(new Armor(R.string.brigandine,"",30,80,1,
                 15,15,0,0));
@@ -127,19 +127,35 @@ public class EquipmentDatabase {
 
         list.add(new Weapon("Hand Axe", 4, 5, 6, 1, 0,
                 0, "", false, false, 0, 0,
-                0, ""));
+                0));
         list.add(new Weapon("Battle Axe", 7, 7, 8, 1, 0,
                 0, "", false, false, 0, 0,
-                0, ""));
+                0));
         list.add(new Weapon("Great Axe", 14, 15, 10, 1, 0,
                 0, "", true, false, 0, 0,
-                0, ""));
-        list.add(new Weapon("Pickaxe", 6, 4, 6, 1, 0,
+                0));
+        list.add(new Weapon("Shortbow", 25, 2, 0, 1, 0,
+                0, "", false, true, 50, 100,
+                150));
+        list.add(new Weapon("Shortbow Arrow", .2, .1, 6, 10, 0,
+                0, "", false, true, 50, 100,
+                150));
+        list.add(new Weapon("Silver Shortbow Arrow", .4, .1, 6, 10, 0,
+                0, "", false, true, 50, 100,
+                150));
+        list.add(new Weapon("Longbow", 60, 3, 0, 1, 0,
+                0, "", false, true, 70, 140,
+                210));
+        list.add(new Weapon("Longbow Arrow", .2, .1, 8, 10, 0,
+                0, "", false, true, 70, 140,
+                210));
+        list.add(new Weapon("Silver Longbow Arrow", .4, .1, 8, 10, 0,
+                0, "", false, true, 70, 140,
+                210));
+        list.add(new Weapon("Longsword", 10, 4, 8, 1, 0,
                 0, "", false, false, 0, 0,
-                0, ""));
-        list.add(new Weapon("Mattock", 8, 6, 8, 1, 0,
-                0, "", false, false, 0, 0,
-                0, ""));
+                0));
+
 
         return list;
     }

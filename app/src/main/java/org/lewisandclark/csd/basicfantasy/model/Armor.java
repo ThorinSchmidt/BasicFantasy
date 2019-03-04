@@ -19,7 +19,7 @@ public class Armor extends Item {
 
     }
 
-    public Armor(String nameID, String formalName, double weight, double costInGP, int quantity,
+    public Armor(String nameID, double weight, double costInGP, int quantity,
                  int ACBonus, int ACMissileBonus, int magicBonus, int magic2ndBonus) {
         super(nameID, weight, costInGP, quantity);
         mACMeleeBonus = ACBonus;

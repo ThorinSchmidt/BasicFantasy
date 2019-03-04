@@ -87,12 +87,12 @@ public class BuyArmorActivity extends AppCompatActivity {
         mCheckoutButton.setOnClickListener(view -> {
             for(int i = 0; i< mArmorCheckedTextViews.size(); i++){
                 if(mArmorCheckedTextViews.get(i).isChecked()){
-                    sCharacters.getPlayerCharacter(sCurrentCharacterIndex).addEquipment(sArmors.get(i));
+                    sCharacters.getPlayerCharacter(sCurrentCharacterIndex).addEquipment(sArmors.get(i),true);
                 }
             }
             for(int i = 0; i< mShieldCheckedTextViews.size(); i++){
                 if(mShieldCheckedTextViews.get(i).isChecked()){
-                    sCharacters.getPlayerCharacter(sCurrentCharacterIndex).addEquipment(sShields.get(i));
+                    sCharacters.getPlayerCharacter(sCurrentCharacterIndex).addEquipment(sShields.get(i),true);
                 }
             }
             logIt();

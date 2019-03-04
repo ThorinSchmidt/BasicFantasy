@@ -572,7 +572,8 @@ public class PlayerCharacter {
         mEquipmentList = equipmentList;
     }
 
-    public void addEquipment(Item item){
+    public void addEquipment(Item item, boolean isEquipped){
+        item.setEquipped(isEquipped);
         this.mEquipmentList.add(item);
     }
 
