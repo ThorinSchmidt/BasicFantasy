@@ -79,11 +79,11 @@ public class EquipmentDatabase {
     private ArrayList<Shield> buildShieldList() {
         ArrayList<Shield> list = new ArrayList<>();
 
-        list.add(new Shield("Buckler", "", 2, 5, 1,
+        list.add(new Shield("Buckler", 2, 5, 1,
                 1, 0, 0, 0));
-        list.add(new Shield("Medium Shield", "", 5, 7, 1,
+        list.add(new Shield("Medium Shield", 5, 7, 1,
                 1, 1, 0, 0));
-        list.add(new Shield("Tower Shield", "", 12, 15, 1,
+        list.add(new Shield("Tower Shield", 12, 15, 1,
                 1, 3, 0, 0));
 
         return list;
