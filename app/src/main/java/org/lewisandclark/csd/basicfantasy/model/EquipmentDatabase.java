@@ -2,6 +2,8 @@ package org.lewisandclark.csd.basicfantasy.model;
 
 import android.content.Context;
 
+import org.lewisandclark.csd.basicfantasy.R;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -102,22 +104,22 @@ public class EquipmentDatabase {
                 14,14,0,0));
         armorList.add(new Armor("Ring Mail",30,25,1,
                 14,14,0,0));
-        /*armorList.add(new Armor(R.string.brigandine,"",30,80,1,
+        armorList.add(new Armor("Brigandine,",30,80,1,
                 15,15,0,0));
-        armorList.add(new Armor(R.string.chain_mail,"",40,60,1,
+        armorList.add(new Armor("Chain Mail,",40,60,1,
                 15,15,0,0));
-        armorList.add(new Armor(R.string.scale,"",55,80,1,
+        armorList.add(new Armor("Scale Mail,",55,80,1,
                 16,16,0,0));
-        armorList.add(new Armor(R.string.splint,"",45,100,1,
+        armorList.add(new Armor("Splint Mail,",45,100,1,
                 16,16,0,0));
-        armorList.add(new Armor(R.string.banded,"",35,200,1,
+        armorList.add(new Armor("Banded Mail,",35,200,1,
                 16,16,0,0));
-        armorList.add(new Armor(R.string.plate,"",50,300,1,
+        armorList.add(new Armor("Plate Mail",50,300,1,
                 17,17,0,0));
-        armorList.add(new Armor(R.string.field_plate,"",70,500,1,
+        armorList.add(new Armor("Field Plate,",70,500,1,
                 18,18,0,0));
-        armorList.add(new Armor(R.string.full_plate,"",80,1500,1,
-                19,19,0,0));*/
+        armorList.add(new Armor("Full Plate,",80,1500,1,
+                19,19,0,0));
 
         return armorList;
     }

@@ -19,6 +19,7 @@ import org.lewisandclark.csd.basicfantasy.model.CharacterList;
 import org.lewisandclark.csd.basicfantasy.model.PlayerCharacter;
 import org.lewisandclark.csd.basicfantasy.utils.DieRoller;
 
+import static java.lang.Math.abs;
 import static org.lewisandclark.csd.basicfantasy.HomeActivity.sCurrentCharacterIndex;
 import static org.lewisandclark.csd.basicfantasy.model.Attribute.CHA;
 import static org.lewisandclark.csd.basicfantasy.model.Attribute.CON;
@@ -186,7 +187,7 @@ public class StatsActivity extends AppCompatActivity implements XPDialog.XPDialo
 
         TextView msg = new TextView(this);
 
-        msg.setText(getString(R.string.saving_throw_msg, target, roll, modString, roll, roll+mod));
+        msg.setText(getString(R.string.saving_throw_msg, target, roll, modString, abs(mod), roll+mod));
         msg.setGravity(Gravity.CENTER_HORIZONTAL);
         msg.setTextColor(Color.BLACK);
         msg.setTextSize(18);
