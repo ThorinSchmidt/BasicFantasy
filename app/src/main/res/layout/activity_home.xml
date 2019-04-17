@@ -14,7 +14,7 @@
             android:id="@+id/currentCharacter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/customborder_title"
+            android:background="@drawable/customborder_top"
             android:textSize="18sp"
             tools:text="Current Character: Fenton Falomar" />
 

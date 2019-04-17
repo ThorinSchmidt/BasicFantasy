@@ -46,7 +46,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/damage"
+            android:text="@string/weapon_damage_heading"
             android:textSize="24sp" />
     </RadioGroup>
 

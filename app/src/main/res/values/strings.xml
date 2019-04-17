@@ -6,6 +6,8 @@
     <string name="action_settings">Settings</string>
     <string name="app_name">BasicFantasy</string>
     <string name="armor">Armor</string>
+    <string name="armor_name_heading">Armor:</string>
+    <string name="armor_bonus_heading">Bonus:</string>
     <string name="attack_msg">To Hit: %1$d %2$s %3$d = %4$d\nDamage:  %5$d %6$s %7$d = %8$d</string>
     <string name="back">Back</string>
     <string name="buy_armor_title">Buy Armor</string>
@@ -27,7 +29,6 @@
     <string name="clear_all">Clear All</string>
     <string name="create_character">Create A Character</string>
     <string name="cur">CUR:</string>
-    <string name="damage">Damage</string>
     <string name="death_save">Death Ray or Poison</string>
     <string name="delete_character">Delete A Character</string>
     <string name="detailed_screen_str">STR</string>
@@ -63,7 +64,6 @@
     <string name="magic_save">Magic Wands</string>
     <string name="main_equip_instructions">Enter the amount of gold given by your GM, or roll it yourself.</string>
     <string name="max">MAX:</string>
-    <string name="name">Name:</string>
     <string name="notes">Notes</string>
     <string name="open_character">Open Current Character</string>
     <string name="paralysis_save">Paralysis or Turn to Stone</string>
@@ -86,8 +86,14 @@
     <string name="weapon3">Weapon 3</string>
     <string name="weapon4">Weapon 4</string>
     <string name="weapon5">Weapon 5</string>
+    <string name="weapon_damage_heading">Damage:</string>
     <string name="weapon_damage_string">1d%1$d%2$s%3$d</string>
     <string name="weapon_screen_add_weapon">Add Weapon</string>
     <string name="weapons">Weapons</string>
+    <string name="weapon_heading">Weapon:</string>
     <string name="xp_string">XP: %1$d</string>
+    <string name="weapon_hit_bonus">Hit Bonus:</string>
+    <string name="attributes">Attributes</string>
+    <string name="saves_heading">Saving Throws</string>
+
 </resources>

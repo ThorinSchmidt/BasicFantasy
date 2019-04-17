@@ -16,7 +16,7 @@
             android:layout_weight="1"
             android:labelFor="@id/text_view_player_name"
             android:minEms="10"
-            android:text="@string/name"
+            android:text="@string/weapon_heading"
             android:textSize="24sp" />
 
 

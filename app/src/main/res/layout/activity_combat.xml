@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:id="@+id/page2view"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/white"
-
     tools:context=".CombatActivity">
+
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -28,7 +26,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="2dp"
                 android:layout_weight="1"
-                android:background="@drawable/customborder_title"
+                android:background="@drawable/customborder_top"
                 android:gravity="center_horizontal"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2"
@@ -41,16 +39,13 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="2dp"
                 android:layout_weight="1"
-                android:background="@drawable/customborder_title"
+                android:background="@drawable/customborder_top"
                 android:gravity="center_horizontal"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                 android:textSize="18sp"
                 tools:text="Thief 5" />
-
-
         </TableRow>
-
     </TableLayout>
 
     <View
@@ -82,7 +77,7 @@
                 android:textSize="22sp"
                 android:textAlignment="center"
                 android:padding="10sp"
-                android:background="@drawable/customborder2"/>
+                android:background="@drawable/customborder_middle"/>
 
             <TextView
                 android:id="@+id/hp_cur_textview"
@@ -96,10 +91,7 @@
                 android:textSize="22sp"
                 android:textAlignment="center"
                 android:padding="10sp"
-                android:background="@drawable/customborder2"/>
-
-
-
+                android:background="@drawable/customborder_middle"/>
         </TableRow>
 
         <TableRow>
@@ -113,7 +105,7 @@
                 android:gravity="center_horizontal"
                 android:orientation="vertical"
                 android:textAlignment="center"
-                android:background="@drawable/customborder2">
+                android:background="@drawable/customborder_middle">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -134,11 +126,8 @@
                         android:textColor="@color/black"
                         android:textSize="18sp"
                         tools:text="17" />
-
                 </LinearLayout>
-
             </LinearLayout>
-
         </TableRow>
 
         <View
@@ -155,7 +144,7 @@
             android:gravity="center_horizontal"
             android:orientation="horizontal"
             android:textAlignment="center"
-            android:background="@drawable/customborder_weapon_heading">
+            android:background="@drawable/customborder_bottom_heading">
 
             <TextView
                 android:id="@+id/weapon_heading_name"
@@ -163,8 +152,8 @@
                 android:layout_height="wrap_content"
                 android:paddingStart="10dp"
                 android:gravity="start"
-                android:text="@string/name"
-                android:textColor="@color/weapon_backgroud"
+                android:text="@string/weapon_heading"
+                android:textColor="@color/bottom_section_header_text"
                 android:textSize="24sp"
                 tools:ignore="RtlSymmetry" />
 
@@ -173,9 +162,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:textColor="@color/weapon_backgroud"
+                android:textColor="@color/bottom_section_header_text"
                 android:textSize="24sp"
-                android:text= "Hit Bonus" />
+                android:text= "@string/weapon_hit_bonus" />
 
             <TextView
                 android:id="@+id/weapon_heading_damage"
@@ -183,11 +172,10 @@
                 android:layout_height="wrap_content"
                 android:paddingEnd="10dp"
                 android:gravity="end"
-                android:textColor="@color/weapon_backgroud"
+                android:textColor="@color/bottom_section_header_text"
                 android:textSize="24sp"
-                android:text= "@string/damage"
+                android:text= "@string/weapon_damage_heading"
                 tools:ignore="RtlSymmetry" />
-
         </TableRow>
 
         <TableRow
@@ -198,7 +186,7 @@
             android:gravity="center_horizontal"
             android:orientation="horizontal"
             android:textAlignment="center"
-            android:background="@drawable/customborder_weapon">
+            android:background="@drawable/customborder_bottom">
 
             <TextView
                 android:id="@+id/weapon_1_name"
@@ -206,7 +194,7 @@
                 android:layout_height="wrap_content"
                 android:paddingStart="10dp"
                 android:gravity="start"
-                android:textColor="@color/black"
+                android:textColor="@color/bottom_section_text"
                 android:textSize="24sp"
                 tools:text="@string/weapon1"
                 tools:ignore="RtlSymmetry" />
@@ -216,7 +204,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:textColor="@color/black"
+                android:textColor="@color/bottom_section_text"
                 android:textSize="24sp"
                 tools:text="+3" />
 
@@ -226,11 +214,10 @@
                 android:layout_height="wrap_content"
                 android:paddingEnd="10dp"
                 android:gravity="end"
-                android:textColor="@color/black"
+                android:textColor="@color/bottom_section_text"
                 android:textSize="24sp"
                 tools:text="1d4"
                 tools:ignore="RtlSymmetry" />
-
         </TableRow>
 
         <TableRow
@@ -241,7 +228,7 @@
             android:gravity="center_horizontal"
             android:orientation="horizontal"
             android:textAlignment="center"
-            android:background="@drawable/customborder_weapon">
+            android:background="@drawable/customborder_bottom">
 
             <TextView
                 android:id="@+id/weapon_2_name"
@@ -249,7 +236,7 @@
                 android:layout_height="wrap_content"
                 android:paddingStart="10dp"
                 android:gravity="start"
-                android:textColor="@color/black"
+                android:textColor="@color/bottom_section_text"
                 android:textSize="24sp"
                 tools:text="@string/weapon2"
                 tools:ignore="RtlSymmetry" />
@@ -259,7 +246,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:textColor="@color/black"
+                android:textColor="@color/bottom_section_text"
                 android:textSize="24sp"
                 tools:text="+3" />
 
@@ -269,12 +256,12 @@
                 android:layout_height="wrap_content"
                 android:paddingEnd="10dp"
                 android:gravity="end"
-                android:textColor="@color/black"
+                android:textColor="@color/bottom_section_text"
                 android:textSize="24sp"
                 tools:text="1d4"
                 tools:ignore="RtlSymmetry" />
-
         </TableRow>
+
         <TableRow
             android:id="@+id/weapon_row3"
             android:layout_width="match_parent"
@@ -283,7 +270,7 @@
             android:gravity="center_horizontal"
             android:orientation="horizontal"
             android:textAlignment="center"
-            android:background="@drawable/customborder_weapon">
+            android:background="@drawable/customborder_bottom">
 
             <TextView
                 android:id="@+id/weapon_3_name"
@@ -291,7 +278,7 @@
                 android:layout_height="wrap_content"
                 android:paddingStart="10dp"
                 android:gravity="start"
-                android:textColor="@color/black"
+                android:textColor="@color/bottom_section_text"
                 android:textSize="24sp"
                 tools:text="@string/weapon3"
                 tools:ignore="RtlSymmetry" />
@@ -301,7 +288,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:textColor="@color/black"
+                android:textColor="@color/bottom_section_text"
                 android:textSize="24sp"
                 tools:text="+3" />
 
@@ -311,12 +298,12 @@
                 android:layout_height="wrap_content"
                 android:paddingEnd="10dp"
                 android:gravity="end"
-                android:textColor="@color/black"
+                android:textColor="@color/bottom_section_text"
                 android:textSize="24sp"
                 tools:text="1d4"
                 tools:ignore="RtlSymmetry" />
-
         </TableRow>
+
         <TableRow
             android:id="@+id/weapon_row4"
             android:layout_width="match_parent"
@@ -325,7 +312,7 @@
             android:gravity="center_horizontal"
             android:orientation="horizontal"
             android:textAlignment="center"
-            android:background="@drawable/customborder_weapon">
+            android:background="@drawable/customborder_bottom">
 
             <TextView
                 android:id="@+id/weapon_4_name"
@@ -333,7 +320,7 @@
                 android:layout_height="wrap_content"
                 android:paddingStart="10dp"
                 android:gravity="start"
-                android:textColor="@color/black"
+                android:textColor="@color/bottom_section_text"
                 android:textSize="24sp"
                 tools:text="@string/weapon4"
                 tools:ignore="RtlSymmetry" />
@@ -343,7 +330,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:textColor="@color/black"
+                android:textColor="@color/bottom_section_text"
                 android:textSize="24sp"
                 tools:text="+3" />
 
@@ -353,12 +340,12 @@
                 android:layout_height="wrap_content"
                 android:paddingEnd="10dp"
                 android:gravity="end"
-                android:textColor="@color/black"
+                android:textColor="@color/bottom_section_text"
                 android:textSize="24sp"
                 tools:text="1d4"
                 tools:ignore="RtlSymmetry" />
-
         </TableRow>
+
         <TableRow
             android:id="@+id/weapon_row5"
             android:layout_width="match_parent"
@@ -367,7 +354,7 @@
             android:gravity="center_horizontal"
             android:orientation="horizontal"
             android:textAlignment="center"
-            android:background="@drawable/customborder_weapon">
+            android:background="@drawable/customborder_bottom">
 
             <TextView
                 android:id="@+id/weapon_5_name"
@@ -375,7 +362,7 @@
                 android:layout_height="wrap_content"
                 android:paddingStart="10dp"
                 android:gravity="start"
-                android:textColor="@color/black"
+                android:textColor="@color/bottom_section_text"
                 android:textSize="24sp"
                 tools:text="@string/weapon5"
                 tools:ignore="RtlSymmetry" />
@@ -385,7 +372,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:textColor="@color/black"
+                android:textColor="@color/bottom_section_text"
                 android:textSize="24sp"
                 tools:text="+3" />
 
@@ -395,13 +382,118 @@
                 android:layout_height="wrap_content"
                 android:paddingEnd="10dp"
                 android:gravity="end"
-                android:textColor="@color/black"
+                android:textColor="@color/bottom_section_text"
                 android:textSize="24sp"
                 tools:text="1d4"
                 tools:ignore="RtlSymmetry" />
-
         </TableRow>
 
+        <View
+            android:id="@+id/divider3"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="@color/black" />
+
+        <TableRow
+            android:id="@+id/armor_heading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:textAlignment="center"
+            android:background="@drawable/customborder_bottom_heading">
+
+            <TextView
+                android:id="@+id/armor_heading_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingStart="10dp"
+                android:gravity="start"
+                android:text="@string/armor_name_heading"
+                android:textColor="@color/bottom_section_header_text"
+                android:textSize="24sp"
+                tools:ignore="RtlSymmetry" />
+
+            <TextView
+                android:id="@+id/armor_bonus"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingEnd="10dp"
+                android:gravity="end"
+                android:textColor="@color/bottom_section_header_text"
+                android:textSize="24sp"
+                android:text= "@string/armor_bonus_heading"
+                tools:ignore="RtlSymmetry" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/armor_row1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:textAlignment="center"
+            android:background="@drawable/customborder_bottom">
+
+            <TextView
+                android:id="@+id/armor_1_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingStart="10dp"
+                android:gravity="start"
+                android:textColor="@color/bottom_section_text"
+                android:textSize="24sp"
+                tools:text="@string/weapon1"
+                tools:ignore="RtlSymmetry" />
+
+            <TextView
+                android:id="@+id/armor_1_bonus"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:textColor="@color/bottom_section_text"
+                android:textSize="24sp"
+                tools:text="+3" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/armor_row2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:textAlignment="center"
+            android:background="@drawable/customborder_bottom">
+
+            <TextView
+                android:id="@+id/armor_2_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingStart="10dp"
+                android:gravity="start"
+                android:textColor="@color/bottom_section_text"
+                android:textSize="24sp"
+                tools:text="@string/weapon2"
+                tools:ignore="RtlSymmetry" />
+
+            <TextView
+                android:id="@+id/armor_2_bonus"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:textColor="@color/bottom_section_text"
+                android:textSize="24sp"
+                tools:text="+3" />
+        </TableRow>
     </TableLayout>
 
     <View
@@ -411,7 +503,7 @@
         android:background="@color/black" />
 
     <LinearLayout
-        android:id="@+id/button_row_bottom"
+        android:id="@+id/button_row_navigate"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_gravity="bottom|center"
@@ -424,7 +516,7 @@
 
         <TextView
             android:id="@+id/left_button"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_margin="2dp"
@@ -433,13 +525,13 @@
             android:gravity="center_vertical|center_horizontal"
             android:text="@string/left"
             android:textAlignment="center"
-            android:textColor="@color/black"
+            android:textColor="@color/navigation_section_text"
             android:textSize="18sp"
             tools:ignore="NestedWeights" />
 
         <TextView
             android:id="@+id/right_button"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_margin="2dp"
@@ -448,9 +540,7 @@
             android:gravity="center_vertical|center_horizontal"
             android:text="@string/right"
             android:textAlignment="center"
-            android:textColor="@color/black"
+            android:textColor="@color/navigation_section_text"
             android:textSize="18sp" />
-
     </LinearLayout>
-
 </LinearLayout>

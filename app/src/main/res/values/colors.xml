@@ -10,5 +10,23 @@
     <color name="green">#00FF00</color>
     <color name="dark_green">#006400</color>
     <color name="light_gray">#D3D3D3</color>
-    <color name="weapon_backgroud">#ffa500</color>
+    <color name="weapon_background">#fc7307</color>
+
+    <color name="top_section_background">#ebf7d4</color>
+    <color name="middle_section_background">#98ca32</color>
+    <color name="bottom_section_background">#fc7307</color>
+    <color name="navigation_section_background">#5a18c9</color>
+
+    <color name="middle_section_header_background">#190934</color>
+    <color name="bottom_section_header_background">#190934</color>
+
+    <color name="top_section_text">#5a18c9</color>
+    <color name="middle_section_text">#190934</color>
+    <color name="bottom_section_text">#190934</color>
+    <color name="navigation_section_text">#ebf7d4</color>
+
+    <color name="middle_section_header_text">#98ca32</color>
+    <color name="bottom_section_header_text">#fc7307</color>
+
+
 </resources>
