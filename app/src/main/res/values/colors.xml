@@ -4,13 +4,7 @@
     <color name="colorPrimaryDark">#19133d</color>
     <color name="colorAccent">#196b14</color>
     <color name="white">#FFFFFF</color>
-    <color name="lime">#00FF00</color>
-    <color name="cell_background">#cba46a</color>
     <color name="black">#000000</color>
-    <color name="green">#00FF00</color>
-    <color name="dark_green">#006400</color>
-    <color name="light_gray">#D3D3D3</color>
-    <color name="weapon_background">#fc7307</color>
 
     <color name="top_section_background">#ebf7d4</color>
     <color name="middle_section_background">#98ca32</color>

@@ -31,7 +31,6 @@
         <activity android:name=".EnterPersonalInfoActivity" />
         <activity android:name=".BuyEquipmentActivity" />
         <activity android:name=".BuyArmorActivity" />
-        <activity android:name=".DetailedCharacterSheetActivity" />
         <activity android:name=".BuyWeaponsActivity" />
         <activity android:name=".StatsActivity" />
         <activity android:name=".CombatActivity" />
