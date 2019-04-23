@@ -448,7 +448,7 @@
                 android:gravity="start"
                 android:textColor="@color/bottom_section_text"
                 android:textSize="24sp"
-                tools:text="@string/weapon1"
+                tools:text="@string/armor1"
                 tools:ignore="RtlSymmetry" />
 
             <TextView
@@ -481,11 +481,77 @@
                 android:gravity="start"
                 android:textColor="@color/bottom_section_text"
                 android:textSize="24sp"
-                tools:text="@string/weapon2"
+                tools:text="@string/armor2"
                 tools:ignore="RtlSymmetry" />
 
             <TextView
                 android:id="@+id/armor_2_bonus"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:textColor="@color/bottom_section_text"
+                android:textSize="24sp"
+                tools:text="+3" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/armor_row3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:textAlignment="center"
+            android:background="@drawable/customborder_bottom">
+
+            <TextView
+                android:id="@+id/armor_3_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingStart="10dp"
+                android:gravity="start"
+                android:textColor="@color/bottom_section_text"
+                android:textSize="24sp"
+                tools:text="@string/armor3"
+                tools:ignore="RtlSymmetry" />
+
+            <TextView
+                android:id="@+id/armor_3_bonus"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:textColor="@color/bottom_section_text"
+                android:textSize="24sp"
+                tools:text="+3" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/armor_row4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:textAlignment="center"
+            android:background="@drawable/customborder_bottom">
+
+            <TextView
+                android:id="@+id/armor_4_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingStart="10dp"
+                android:gravity="start"
+                android:textColor="@color/bottom_section_text"
+                android:textSize="24sp"
+                tools:text="@string/armor4"
+                tools:ignore="RtlSymmetry" />
+
+            <TextView
+                android:id="@+id/armor_4_bonus"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

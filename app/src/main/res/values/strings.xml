@@ -95,5 +95,9 @@
     <string name="weapon_hit_bonus">Hit Bonus:</string>
     <string name="attributes">Attributes</string>
     <string name="saves_heading">Saving Throws</string>
+    <string name="armor3">Armor</string>
+    <string name="armor2">Armor</string>
+    <string name="armor1">Armor</string>
+    <string name="armor4">Armor</string>
 
 </resources>
