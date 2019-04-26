@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.text.InputType;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -33,6 +34,8 @@ import static org.lewisandclark.csd.basicfantasy.model.Attribute.WIS;
 public class DetailsActivity extends AppCompatActivity {
 
     static final String TAG = "";
+
+    private String dialogInput = "";
 
     private CharacterList sCharacters = CharacterList.getPlayerCharacterList(this);
     private PlayerCharacter mCurrentCharacter;
@@ -114,6 +117,18 @@ public class DetailsActivity extends AppCompatActivity {
         mTextViewRightNavigate = findViewById(R.id.right_button);
 
         //functions specific to the layout go here
+        mTextViewCharacterGender.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openEditDialog("Set Gender","Type your character's Gender Presentation",   true, true, false);
+                Log.d("GENDER", dialogInput);
+                mCurrentCharacter.setGender(dialogInput);
+                Log.d("GENDER", mCurrentCharacter.getGenderString());
+                String genderString = getString(R.string.gender_string,mCurrentCharacter.getGenderString());
+                mTextViewCharacterGender.setText(genderString);
+                //findViewById(R.id.gender_view).invalidate();
+            }
+        });
 
 
         //navigation functions
@@ -157,12 +172,12 @@ public class DetailsActivity extends AppCompatActivity {
     }
 
 
-    public void openDialog(){
+    public void openDialog(String title, String message, Boolean showPos, Boolean showNeg, Boolean showNeutral){
 
         AlertDialog alertDialog = new AlertDialog.Builder(this).create();
 
         TextView mTextViewTitle = new TextView(this);
-        mTextViewTitle.setText("Generic Title");
+        mTextViewTitle.setText(title);
         mTextViewTitle.setPadding(3, 3, 3, 10);
         mTextViewTitle.setGravity(Gravity.CENTER);
         mTextViewTitle.setTextColor(Color.BLUE);
@@ -171,7 +186,7 @@ public class DetailsActivity extends AppCompatActivity {
 
         TextView msg = new TextView(this);
 
-        msg.setText("Generic Message");
+        msg.setText(message);
         msg.setGravity(Gravity.CENTER_HORIZONTAL);
         msg.setTextColor(Color.BLACK);
         msg.setTextSize(18);
@@ -184,13 +199,270 @@ public class DetailsActivity extends AppCompatActivity {
             }
         });
 
+        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Apply", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                //no action to perform
+            }
+        });
+
+        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                //no action to perform
+            }
+        });
+
         new Dialog(getApplicationContext());
         alertDialog.show();
 
-        //set properties of the OK button
+        //set properties of the buttons
         final Button okButton = alertDialog.getButton(AlertDialog.BUTTON_NEUTRAL);
         LinearLayout.LayoutParams neutralButtonLP = (LinearLayout.LayoutParams) okButton.getLayoutParams();
         okButton.setTextColor(Color.BLUE);
         okButton.setLayoutParams(neutralButtonLP);
+
+        final Button cancelButton = alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE);
+        LinearLayout.LayoutParams negButtonLP = (LinearLayout.LayoutParams) cancelButton.getLayoutParams();
+        cancelButton.setTextColor(Color.BLUE);
+        cancelButton.setLayoutParams(negButtonLP);
+
+        final Button applyButton = alertDialog.getButton(AlertDialog.BUTTON_POSITIVE);
+        LinearLayout.LayoutParams posButtonLP = (LinearLayout.LayoutParams) applyButton.getLayoutParams();
+        applyButton.setTextColor(Color.BLUE);
+        applyButton.setLayoutParams(posButtonLP);
+
+        //show buttons based on parameters
+        if(!showNeg){
+            cancelButton.setVisibility(View.GONE);
+        }
+
+        if(!showPos){
+            applyButton.setVisibility(View.GONE);
+        }
+
+        if(!showNeutral){
+            okButton.setVisibility(View.GONE);
+        }
+    }
+
+    public void openEditDialog(String title, String hint, Boolean showPos, Boolean showNeg, Boolean showNeutral){
+
+        AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+
+        TextView mTextViewTitle = new TextView(this);
+        mTextViewTitle.setText(title);
+        mTextViewTitle.setPadding(3, 3, 3, 10);
+        mTextViewTitle.setGravity(Gravity.CENTER);
+        mTextViewTitle.setTextColor(Color.BLUE);
+        mTextViewTitle.setTextSize(20);
+        alertDialog.setCustomTitle(mTextViewTitle);
+
+        final EditText input = new EditText(this);
+        input.setHint(hint);
+        input.setInputType(InputType.TYPE_CLASS_TEXT);
+        alertDialog.setView(input);
+
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                //no action to perform
+            }
+        });
+
+        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Apply", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInput = input.getText().toString();
+
+            }
+        });
+
+        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInput = mCurrentCharacter.getGenderString();
+            }
+        });
+
+        new Dialog(getApplicationContext());
+        alertDialog.show();
+
+        //set properties of the buttons
+        final Button okButton = alertDialog.getButton(AlertDialog.BUTTON_NEUTRAL);
+        LinearLayout.LayoutParams neutralButtonLP = (LinearLayout.LayoutParams) okButton.getLayoutParams();
+        okButton.setTextColor(Color.BLUE);
+        okButton.setLayoutParams(neutralButtonLP);
+
+        final Button cancelButton = alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE);
+        LinearLayout.LayoutParams negButtonLP = (LinearLayout.LayoutParams) cancelButton.getLayoutParams();
+        cancelButton.setTextColor(Color.BLUE);
+        cancelButton.setLayoutParams(negButtonLP);
+
+        final Button applyButton = alertDialog.getButton(AlertDialog.BUTTON_POSITIVE);
+        LinearLayout.LayoutParams posButtonLP = (LinearLayout.LayoutParams) applyButton.getLayoutParams();
+        applyButton.setTextColor(Color.BLUE);
+        applyButton.setLayoutParams(posButtonLP);
+
+        //show buttons based on parameters
+        if(!showNeg){
+            cancelButton.setVisibility(View.GONE);
+        }
+
+        if(!showPos){
+            applyButton.setVisibility(View.GONE);
+        }
+
+        if(!showNeutral){
+            okButton.setVisibility(View.GONE);
+        }
+    }
+
+    public void openRaceDialog(String title, String message, Boolean showPos, Boolean showNeg, Boolean showNeutral){
+
+        AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+
+        TextView mTextViewTitle = new TextView(this);
+        mTextViewTitle.setText(title);
+        mTextViewTitle.setPadding(3, 3, 3, 10);
+        mTextViewTitle.setGravity(Gravity.CENTER);
+        mTextViewTitle.setTextColor(Color.BLUE);
+        mTextViewTitle.setTextSize(20);
+        alertDialog.setCustomTitle(mTextViewTitle);
+
+        TextView msg = new TextView(this);
+
+        msg.setText(message);
+        msg.setGravity(Gravity.CENTER_HORIZONTAL);
+        msg.setTextColor(Color.BLACK);
+        msg.setTextSize(18);
+        alertDialog.setView(msg);
+
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                //no action to perform
+            }
+        });
+
+        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Apply", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                //no action to perform
+            }
+        });
+
+        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                //no action to perform
+            }
+        });
+
+        new Dialog(getApplicationContext());
+        alertDialog.show();
+
+        //set properties of the buttons
+        final Button okButton = alertDialog.getButton(AlertDialog.BUTTON_NEUTRAL);
+        LinearLayout.LayoutParams neutralButtonLP = (LinearLayout.LayoutParams) okButton.getLayoutParams();
+        okButton.setTextColor(Color.BLUE);
+        okButton.setLayoutParams(neutralButtonLP);
+
+        final Button cancelButton = alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE);
+        LinearLayout.LayoutParams negButtonLP = (LinearLayout.LayoutParams) cancelButton.getLayoutParams();
+        cancelButton.setTextColor(Color.BLUE);
+        cancelButton.setLayoutParams(negButtonLP);
+
+        final Button applyButton = alertDialog.getButton(AlertDialog.BUTTON_POSITIVE);
+        LinearLayout.LayoutParams posButtonLP = (LinearLayout.LayoutParams) applyButton.getLayoutParams();
+        applyButton.setTextColor(Color.BLUE);
+        applyButton.setLayoutParams(posButtonLP);
+
+        //show buttons based on parameters
+        if(!showNeg){
+            cancelButton.setVisibility(View.GONE);
+        }
+
+        if(!showPos){
+            applyButton.setVisibility(View.GONE);
+        }
+
+        if(!showNeutral){
+            okButton.setVisibility(View.GONE);
+        }
+    }
+
+    public void openSexDialog(String title, String message, Boolean showPos, Boolean showNeg, Boolean showNeutral){
+
+        AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+
+        TextView mTextViewTitle = new TextView(this);
+        mTextViewTitle.setText(title);
+        mTextViewTitle.setPadding(3, 3, 3, 10);
+        mTextViewTitle.setGravity(Gravity.CENTER);
+        mTextViewTitle.setTextColor(Color.BLUE);
+        mTextViewTitle.setTextSize(20);
+        alertDialog.setCustomTitle(mTextViewTitle);
+
+        TextView msg = new TextView(this);
+
+        msg.setText(message);
+        msg.setGravity(Gravity.CENTER_HORIZONTAL);
+        msg.setTextColor(Color.BLACK);
+        msg.setTextSize(18);
+        alertDialog.setView(msg);
+
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                //no action to perform
+            }
+        });
+
+        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Apply", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                //no action to perform
+            }
+        });
+
+        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                //no action to perform
+            }
+        });
+
+        new Dialog(getApplicationContext());
+        alertDialog.show();
+
+        //set properties of the buttons
+        final Button okButton = alertDialog.getButton(AlertDialog.BUTTON_NEUTRAL);
+        LinearLayout.LayoutParams neutralButtonLP = (LinearLayout.LayoutParams) okButton.getLayoutParams();
+        okButton.setTextColor(Color.BLUE);
+        okButton.setLayoutParams(neutralButtonLP);
+
+        final Button cancelButton = alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE);
+        LinearLayout.LayoutParams negButtonLP = (LinearLayout.LayoutParams) cancelButton.getLayoutParams();
+        cancelButton.setTextColor(Color.BLUE);
+        cancelButton.setLayoutParams(negButtonLP);
+
+        final Button applyButton = alertDialog.getButton(AlertDialog.BUTTON_POSITIVE);
+        LinearLayout.LayoutParams posButtonLP = (LinearLayout.LayoutParams) applyButton.getLayoutParams();
+        applyButton.setTextColor(Color.BLUE);
+        applyButton.setLayoutParams(posButtonLP);
+
+        //show buttons based on parameters
+        if(!showNeg){
+            cancelButton.setVisibility(View.GONE);
+        }
+
+        if(!showPos){
+            applyButton.setVisibility(View.GONE);
+        }
+
+        if(!showNeutral){
+            okButton.setVisibility(View.GONE);
+        }
     }
 }
