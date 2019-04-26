@@ -19,7 +19,7 @@ import android.widget.Toast;
 import org.lewisandclark.csd.basicfantasy.model.CharacterClass;
 import org.lewisandclark.csd.basicfantasy.model.CharacterList;
 import org.lewisandclark.csd.basicfantasy.model.EquipmentDatabase;
-import org.lewisandclark.csd.basicfantasy.model.Gender;
+import org.lewisandclark.csd.basicfantasy.model.Sex;
 import org.lewisandclark.csd.basicfantasy.model.Item;
 import org.lewisandclark.csd.basicfantasy.model.PlayerCharacter;
 import org.lewisandclark.csd.basicfantasy.model.Race;
@@ -164,12 +164,25 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void createPreGens(){
-        PlayerCharacter Darion = new PlayerCharacter("Darion", Race.HUMAN, Gender.MALE, CharacterClass.FIGHTER,
+        PlayerCharacter Darion = new PlayerCharacter("Darion", Race.HUMAN, Sex.MALE, CharacterClass.FIGHTER,
                 16, 9, 8, 13, 13, 11, 6, 7);
         Darion.addEquipment(sEquipmentDatabase.getEquipment("Longsword"), true);
-        PlayerCharacter Morningstar = new PlayerCharacter("Morningstar", Race.ELF, Gender.FEMALE, CharacterClass.FIGHTER_MU,
+        Darion.setAge(22);
+        Darion.setWeight(220);
+        Darion.setHeight(74);
+        Darion.setEyeColor("Blue");
+        Darion.setHairColor("Brown");
+        Darion.setGender("Male");
+        Darion.setAppearanceDetails("Has a nipple ring.");
+        PlayerCharacter Morningstar = new PlayerCharacter("Morningstar", Race.ELF, Sex.FEMALE, CharacterClass.FIGHTER_MU,
                 15, 14, 14, 7, 11, 15, 5, 3);
         Morningstar.addEquipment(sEquipmentDatabase.getEquipment("Longsword"), true);
+        Morningstar.setAge(86);
+        Morningstar.setWeight(98);
+        Morningstar.setHeight(58);
+        Morningstar.setEyeColor("Green");
+        Morningstar.setHairColor("Blonde");
+        Morningstar.setGender("Andro.");
         sCharacters.addCharacter(Darion);
         sCharacters.addCharacter(Morningstar);
     }

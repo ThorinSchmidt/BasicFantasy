@@ -5,6 +5,8 @@
     <color name="colorAccent">#196b14</color>
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
+    <color name="lime">#98ca32</color>
+    <color name="lightgray">#d3d3d3</color>
 
     <color name="top_section_background">#ebf7d4</color>
     <color name="middle_section_background">#98ca32</color>

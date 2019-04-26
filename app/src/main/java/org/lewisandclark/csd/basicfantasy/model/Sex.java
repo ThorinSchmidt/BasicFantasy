@@ -6,10 +6,11 @@ import org.lewisandclark.csd.basicfantasy.R;
  * Created by Thorin Schmidt on 3/18/2018.
  */
 
-public enum Gender {
+public enum Sex {
     MALE(R.string.gender_male),
-    FEMALE(R.string.gender_female);
+    FEMALE(R.string.gender_female),
+    NEITHER(R.string.gender_neither);
 
-    Gender(int mResID) {
+    Sex(int mResID) {
     }
 }

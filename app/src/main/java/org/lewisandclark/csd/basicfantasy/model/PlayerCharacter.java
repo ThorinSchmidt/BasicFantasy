@@ -26,11 +26,15 @@ public class PlayerCharacter {
 
     private int ID;
     private String mName;
-    private Gender mSex;
-    //private int mHeight;
-    //private int mWeight;
-    //private int mAge;
-    //private String mEyeColor;
+    private Sex mSex;
+    private String mGender;
+    private int mHeight;
+    private int mWeight;
+    private int mAge;
+    private String mEyeColor;
+    private String mHairColor;
+    private String mAppearanceDetails;
+
     private int mLevel;
     private int mXP;
     private Race mRace;
@@ -82,7 +86,7 @@ public class PlayerCharacter {
     /**
      * Pregen Constructor
      */
-    public PlayerCharacter(String name, Race race, Gender sex, CharacterClass characterClass,
+    public PlayerCharacter(String name, Race race, Sex sex, CharacterClass characterClass,
                            int str, int intelligence, int wis, int dex, int con, int cha, int hp,
                            int gp){
         this.mName = name;
@@ -131,13 +135,13 @@ public class PlayerCharacter {
      */
     public PlayerCharacter(){
         this.mName = "Fenton Falomar";
-        this.mSex = Gender.MALE;
+        this.mSex = Sex.MALE;
         this.mRace = Race.HUMAN;
         this.mPlayerClass = CharacterClass.FIGHTER;
-        //this.mAge = 20;
-        //this.mHeight = 76;
-        //this.mWeight = 220;
-        //this.mEyeColor = "Green";
+        this.mAge = 20;
+        this.mHeight = 76;
+        this.mWeight = 220;
+        this.mEyeColor = "Green";
         this.mLevel = 1;
         this.mXP = 0;
         this.mHitDie = 8;
@@ -161,14 +165,14 @@ public class PlayerCharacter {
      */
     public PlayerCharacter(String name){
         this.mName = name;
-        this.mSex = Gender.FEMALE;
+        this.mSex = Sex.FEMALE;
         this.mRace = Race.ELF;
         this.mPlayerClass = CharacterClass.MAGIC_USER;
-        //this.mAge = 120;
-        //this.mHeight = 65;
-        //this.mWeight = 100;
-        //this.mEyeColor = "Blue";
-        //this.mHairColor = "Brown";
+        this.mAge = 120;
+        this.mHeight = 65;
+        this.mWeight = 100;
+        this.mEyeColor = "Blue";
+        this.mHairColor = "Brown";
         this.mLevel = 1;
         this.mXP = 0;
         this.mHitDie = 4;
@@ -284,15 +288,41 @@ public class PlayerCharacter {
         mName = name;
     }
 
-    public Gender getSex() {
+    public Sex getSex() {
         return mSex;
     }
 
-    public void setSex(Gender sex) {
-        mSex = sex;
+    public String getSexString() {
+        if(mSex!=null){
+            return this.mSex.toString();
+        }
+        else {
+            return "Null";
+        }
     }
 
-    /*public String getEyeColor() {return mEyeColor;}
+    public void setSex(Sex mSex) {
+        this.mSex = mSex;
+    }
+
+    public String getGender() {
+        return mGender;
+    }
+
+    public String getGenderString() {
+        if (mGender != null) {
+            return mGender.toString();
+        }
+        else{
+            return "Null";
+        }
+    }
+
+    public void setGender(String mGender) {
+        this.mGender = mGender;
+    }
+
+    public String getEyeColor() {return mEyeColor;}
 
     public void setEyeColor(String eyeColor) {mEyeColor = eyeColor;}
 
@@ -302,6 +332,12 @@ public class PlayerCharacter {
 
     public int getHeight() {
         return mHeight;
+    }
+
+    public String getHeightString() {
+        int feet = mHeight/12;
+        int inches = mHeight%12;
+        return Integer.toString(feet)+"' "+ Integer.toString(inches)+'"';
     }
 
     public void setHeight(int height) {
@@ -318,7 +354,15 @@ public class PlayerCharacter {
 
     public void setAge(int age) {
         mAge = age;
-    }*/
+    }
+
+    public String getAppearanceDetails() {
+        return mAppearanceDetails;
+    }
+
+    public void setAppearanceDetails(String mAppearanceDetails) {
+        this.mAppearanceDetails = mAppearanceDetails;
+    }
 
     public int getLevel() {
         return mLevel;
@@ -583,4 +627,13 @@ public class PlayerCharacter {
 
         return items;
     }
+
+    public String getHairColor() {
+        return mHairColor;
+    }
+
+    public void setHairColor(String mHairColor) {
+        this.mHairColor = mHairColor;
+    }
+
 }

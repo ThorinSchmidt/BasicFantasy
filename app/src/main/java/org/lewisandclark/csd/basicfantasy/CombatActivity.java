@@ -168,7 +168,7 @@ public class CombatActivity extends AppCompatActivity implements CurHPDialog.Cur
             @Override
             public void onClick(View view) {
                 //open right screen
-                Intent i = StatsActivity.newIntent(CombatActivity.this);
+                Intent i = DetailsActivity.newIntent(CombatActivity.this);
                 startActivity(i);
                 overridePendingTransition(R.anim.right_to_left_in, R.anim.right_to_left_out);
             }

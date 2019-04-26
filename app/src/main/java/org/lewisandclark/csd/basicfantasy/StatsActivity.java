@@ -143,7 +143,7 @@ public class StatsActivity extends AppCompatActivity implements XPDialog.XPDialo
 
         mTextViewLeftNavigate.setOnClickListener(view -> {
             //open left screen
-            Intent i = CombatActivity.newIntent(StatsActivity.this);
+            Intent i = DetailsActivity.newIntent(StatsActivity.this);
             startActivity(i);
             overridePendingTransition(R.anim.left_to_right_in, R.anim.left_to_right_out);
         });

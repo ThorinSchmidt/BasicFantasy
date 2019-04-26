@@ -22,7 +22,7 @@ import static org.lewisandclark.csd.basicfantasy.HomeActivity.sCurrentCharacterI
 
 public class TemplateActivity extends AppCompatActivity {
 
-    static final String TAG = "StatsActivity";
+    static final String TAG = "";
 
     private CharacterList sCharacters = CharacterList.getPlayerCharacterList(this);
     private PlayerCharacter mCurrentCharacter;
@@ -32,6 +32,7 @@ public class TemplateActivity extends AppCompatActivity {
 
     //stuff specific to the layout goes here
 
+    //navigation buttons
     private TextView mTextViewLeftNavigate;
     private TextView mTextViewRightNavigate;
 
@@ -44,7 +45,7 @@ public class TemplateActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_stats);
+        setContentView(R.layout.activity_template);
 
         mCurrentCharacter = sCharacters.getPlayerCharacter(sCurrentCharacterIndex);
 
@@ -56,11 +57,13 @@ public class TemplateActivity extends AppCompatActivity {
 
         //stuff specific to the layout goes here
 
+        //navigation buttons
         mTextViewLeftNavigate = findViewById(R.id.left_button);
         mTextViewRightNavigate = findViewById(R.id.right_button);
 
         //functions specific to the layout go here
 
+        //navigation functions
         mTextViewLeftNavigate.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){

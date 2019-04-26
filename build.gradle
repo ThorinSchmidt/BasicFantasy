@@ -5,7 +5,7 @@ buildscript {
     repositories {
         google()
         //jcenter()
-        mavenLocal()
+        //mavenLocal()
         jcenter {
             url "http://jcenter.bintray.com"
         }
@@ -27,7 +27,7 @@ allprojects {
     repositories {
         google()
         //jcenter()
-        mavenLocal()
+        //mavenLocal()
         jcenter {
             url "http://jcenter.bintray.com"
         }

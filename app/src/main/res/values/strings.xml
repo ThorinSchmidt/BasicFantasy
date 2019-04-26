@@ -99,5 +99,17 @@
     <string name="armor2">Armor</string>
     <string name="armor1">Armor</string>
     <string name="armor4">Armor</string>
+    <string name="gender_string">Gender: %1$s</string>
+    <string name="sex_string">Sex: %1$s</string>
+    <string name="appearance_heading">Appearance</string>
+    <string name="race_string">Race: %1$s</string>
+    <string name="age_string">Age: %1$d</string>
+    <string name="height_string">Height: %1$s</string>
+    <string name="weight_string">Weight: %1$d</string>
+    <string name="hair_string">Hair: %1$s</string>
+    <string name="eyes_string">Eyes: %1$s</string>
+    <string name="details_heading">Details</string>
+    <string name="details_hint">Enter extra details here</string>
+    <string name="gender_neither">Neither</string>
 
 </resources>
