@@ -17,18 +17,16 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.lewisandclark.csd.basicfantasy.dialogs.CurrentHPDialog;
 import org.lewisandclark.csd.basicfantasy.model.CharacterList;
-import org.lewisandclark.csd.basicfantasy.model.EquipmentDatabase;
 import org.lewisandclark.csd.basicfantasy.model.Item;
 import org.lewisandclark.csd.basicfantasy.model.PlayerCharacter;
 import org.lewisandclark.csd.basicfantasy.model.Weapon;
 import org.lewisandclark.csd.basicfantasy.utils.DieRoller;
 
-import java.util.ArrayList;
-
 import static org.lewisandclark.csd.basicfantasy.HomeActivity.sCurrentCharacterIndex;
 
-public class CombatActivity extends AppCompatActivity implements CurHPDialog.CurHPDialogListener {
+public class CombatActivity extends AppCompatActivity implements CurrentHPDialog.CurHPDialogListener {
 
     private CharacterList sCharacters = CharacterList.getPlayerCharacterList(this);
     private PlayerCharacter mCurrentCharacter = sCharacters.getPlayerCharacter(sCurrentCharacterIndex);
@@ -245,16 +243,18 @@ public class CombatActivity extends AppCompatActivity implements CurHPDialog.Cur
     }
 
     public void openCurHPDialog(){
-        CurHPDialog curHPDialog = new CurHPDialog();
-        curHPDialog.show(getSupportFragmentManager(), "HP dialog");
+        CurrentHPDialog currentHPDialog = new CurrentHPDialog();
+        currentHPDialog.show(getSupportFragmentManager(), "HP dialog");
     }
 
     @Override
     public void applyHP(int hp) {
         Resources r = getResources();
         int currentHP = mCurrentCharacter.getCurrentHitPoints();
-        //needed for later: the rule of not allowing more than 1 level gain at a time
-        //int currentLevel = mCurrentCharacter.getLevel();
+        /*
+        TODO: the rule of not allowing more than 1 level gain at a time
+        int currentLevel = mCurrentCharacter.getLevel();
+        */
         currentHP += hp;
         if (currentHP > mCurrentCharacter.getTotalHitPoints()){
             currentHP = mCurrentCharacter.getTotalHitPoints();

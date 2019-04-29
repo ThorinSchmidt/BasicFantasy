@@ -1,4 +1,4 @@
-package org.lewisandclark.csd.basicfantasy;
+package org.lewisandclark.csd.basicfantasy.dialogs;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -10,10 +10,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 
+import org.lewisandclark.csd.basicfantasy.R;
+
 /**
  * Created by Thorin Schmidt on 2/2/2019.
  */
-public class XPDialog  extends AppCompatDialogFragment {
+public class MaximumHPDialog extends AppCompatDialogFragment {
     private EditText mEditTextXP;
     private XPDialogListener listener;
 
@@ -22,7 +24,7 @@ public class XPDialog  extends AppCompatDialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        View view = inflater.inflate(R.layout.layout_xp_dialog, null);
+        View view = inflater.inflate(R.layout.dialog_xp, null);
 
         builder.setView(view)
                 .setTitle("Add Experience")

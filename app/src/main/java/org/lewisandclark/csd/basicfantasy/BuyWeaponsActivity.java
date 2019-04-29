@@ -119,7 +119,7 @@ public class BuyWeaponsActivity extends AppCompatActivity {
         }
     }
 
-    // TODO: 4/23/2018 Create a custom view that displays the full weapon table from Equipment
+    // TODO: 4/23/2018 Create a custom view that displays the full listview_weapon table from Equipment
     //     Emporium then inflate that view for use in a dialog box.
     //     https://stackoverflow.com/questions/16955053/android-how-do-i-make-this-alert-dialog-scrollable
 }

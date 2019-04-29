@@ -1,4 +1,4 @@
-package org.lewisandclark.csd.basicfantasy;
+package org.lewisandclark.csd.basicfantasy.dialogs;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -11,10 +11,12 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
 
+import org.lewisandclark.csd.basicfantasy.R;
+
 /**
  * Created by Thorin Schmidt on 2/2/2019.
  */
-public class CurHPDialog extends AppCompatDialogFragment {
+public class CurrentHPDialog extends AppCompatDialogFragment {
     private EditText mEditTextHP;
     private RadioButton mButtonHeal;
     private RadioButton mButtonDamage;
@@ -25,7 +27,7 @@ public class CurHPDialog extends AppCompatDialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        View view = inflater.inflate(R.layout.layout_cur_hp_dialog, null);
+        View view = inflater.inflate(R.layout.dialog_current_hp, null);
 
         builder.setView(view)
                 .setTitle("Current Hit Points")

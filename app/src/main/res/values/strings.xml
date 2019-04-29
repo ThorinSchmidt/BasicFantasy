@@ -111,5 +111,8 @@
     <string name="details_heading">Details</string>
     <string name="details_hint">Enter extra details here</string>
     <string name="gender_neither">Neither</string>
+    <string name="sex_choice_hint">This is your character\'s \'genetics\'. It has no impact on your gender unless you wish it. A few spells, effects, etc. target your sex rather than gender.</string>
+    <string name="choice_female">FEMALE</string>
+    <string name="choice_male">MALE</string>
 
 </resources>

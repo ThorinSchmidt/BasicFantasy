@@ -1,4 +1,4 @@
-package org.lewisandclark.csd.basicfantasy;
+package org.lewisandclark.csd.basicfantasy.dialogs;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -10,19 +10,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 
+import org.lewisandclark.csd.basicfantasy.R;
+
 /**
  * Created by Thorin Schmidt on 2/2/2019.
  */
-public class ChooseCharacterDialogFragment extends AppCompatDialogFragment {
+public class XPDialog  extends AppCompatDialogFragment {
     private EditText mEditTextXP;
-    private CCDialogListener listener;
+    private XPDialogListener listener;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        View view = inflater.inflate(R.layout.layout_xp_dialog, null);
+        View view = inflater.inflate(R.layout.dialog_xp, null);
 
         builder.setView(view)
                 .setTitle("Add Experience")
@@ -35,8 +37,8 @@ public class ChooseCharacterDialogFragment extends AppCompatDialogFragment {
                 .setPositiveButton("Add XP", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        int num = 0;
-                        listener.changeCharacter(num);
+                        int xp = Integer.valueOf(mEditTextXP.getText().toString());
+                        listener.applyXP(xp);
 
                     }
                 });
@@ -49,14 +51,14 @@ public class ChooseCharacterDialogFragment extends AppCompatDialogFragment {
     public void onAttach(Context context) {
         super.onAttach(context);
         try {
-            listener = (CCDialogListener) context;
+            listener = (XPDialogListener) context;
         } catch (ClassCastException e) {
             throw new ClassCastException(context.toString() +
                     "must implement CCDialogListener.");
         }
     }
 
-    public interface CCDialogListener {
-        void changeCharacter(int num);
+    public interface XPDialogListener{
+        void applyXP(int xp);
     }
 }

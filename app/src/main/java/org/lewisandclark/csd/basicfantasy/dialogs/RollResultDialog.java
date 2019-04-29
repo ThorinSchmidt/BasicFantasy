@@ -1,4 +1,4 @@
-package org.lewisandclark.csd.basicfantasy;
+package org.lewisandclark.csd.basicfantasy.dialogs;
 
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
@@ -7,13 +7,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import org.lewisandclark.csd.basicfantasy.R;
+
 /**
  * This fragment displays a single score roll.
  * The user can do nothing else on this fragment.
  * @author Thorin Schmidt on 4/13/2017.
  */
 
-public class RollResultFragment extends DialogFragment {
+public class RollResultDialog extends DialogFragment {
 
     /**
      * Modifier of the score.
@@ -36,11 +38,11 @@ public class RollResultFragment extends DialogFragment {
     int mTotal;
 
     /**
-     * Create a new instance of RollResultFragment, providing "roll"
+     * Create a new instance of RollResultDialog, providing "roll"
      * and "mod" as arguments.
      */
-    static RollResultFragment newInstance(int roll, int mod, String name) {
-        RollResultFragment f = new RollResultFragment();
+    static RollResultDialog newInstance(int roll, int mod, String name) {
+        RollResultDialog f = new RollResultDialog();
 
         // Supply num input as an argument.
         Bundle args = new Bundle();
