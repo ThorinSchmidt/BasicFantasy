@@ -114,5 +114,6 @@
     <string name="sex_choice_hint">This is your character\'s \'genetics\'. It has no impact on your gender unless you wish it. A few spells, effects, etc. target your sex rather than gender.</string>
     <string name="choice_female">FEMALE</string>
     <string name="choice_male">MALE</string>
+    <string name="race_choice_hint">Choose your character\'s race.</string>
 
 </resources>

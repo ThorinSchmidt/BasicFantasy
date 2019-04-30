@@ -17,10 +17,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import org.lewisandclark.csd.basicfantasy.dialogs.SetRaceDialog;
 import org.lewisandclark.csd.basicfantasy.dialogs.SetSexDialog;
 import org.lewisandclark.csd.basicfantasy.model.CharacterList;
 import org.lewisandclark.csd.basicfantasy.model.PlayerCharacter;
+import org.lewisandclark.csd.basicfantasy.model.Race;
 import org.lewisandclark.csd.basicfantasy.model.Sex;
 import org.lewisandclark.csd.basicfantasy.utils.DieRoller;
 
@@ -33,7 +36,9 @@ import static org.lewisandclark.csd.basicfantasy.model.Attribute.INT;
 import static org.lewisandclark.csd.basicfantasy.model.Attribute.STR;
 import static org.lewisandclark.csd.basicfantasy.model.Attribute.WIS;
 
-public class DetailsActivity extends AppCompatActivity implements SetSexDialog.SetSexDialogListener {
+public class DetailsActivity extends AppCompatActivity implements
+        SetSexDialog.SetSexDialogListener,
+        SetRaceDialog.SetRaceDialogListener {
 
     static final String TAG = "";
 
@@ -121,7 +126,6 @@ public class DetailsActivity extends AppCompatActivity implements SetSexDialog.S
             @Override
             public void onClick(View v) {
                 openGenderDialog();
-                //findViewById(R.id.gender_view).invalidate();
             }
         });
 
@@ -133,6 +137,27 @@ public class DetailsActivity extends AppCompatActivity implements SetSexDialog.S
             }
         });
 
+        mTextViewCharacterRace.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SetRaceDialog setRaceDialog = new SetRaceDialog();
+                setRaceDialog.show(getSupportFragmentManager(), "Race dialog");
+            }
+        });
+
+        mTextViewCharacterAge.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openAgeDialog();
+            }
+        });
+
+        mTextViewCharacterHeight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openHeightDialog();
+            }
+        });
 
         //navigation functions
         mTextViewLeftNavigate.setOnClickListener(new View.OnClickListener(){
@@ -174,45 +199,40 @@ public class DetailsActivity extends AppCompatActivity implements SetSexDialog.S
         return;
     }
 
-
-    public void openDialog(String title, String message, Boolean showPos, Boolean showNeg, Boolean showNeutral){
+    public void openHeightDialog(){
 
         AlertDialog alertDialog = new AlertDialog.Builder(this).create();
 
         TextView mTextViewTitle = new TextView(this);
-        mTextViewTitle.setText(title);
+        mTextViewTitle.setText("Set Height");
         mTextViewTitle.setPadding(3, 3, 3, 10);
         mTextViewTitle.setGravity(Gravity.CENTER);
         mTextViewTitle.setTextColor(Color.BLUE);
         mTextViewTitle.setTextSize(20);
         alertDialog.setCustomTitle(mTextViewTitle);
 
-        TextView msg = new TextView(this);
-
-        msg.setText(message);
-        msg.setGravity(Gravity.CENTER_HORIZONTAL);
-        msg.setTextColor(Color.BLACK);
-        msg.setTextSize(18);
-        alertDialog.setView(msg);
-
-        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                //no action to perform
-            }
-        });
+        final EditText input = new EditText(this);
+        input.setHint("Type your character's height in inches.");
+        input.setInputType(InputType.TYPE_CLASS_TEXT);
+        alertDialog.setView(input);
 
         alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Apply", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                //no action to perform
+                Log.d("AGE", Integer.toString(mCurrentCharacter.getAge()));
+                int newHeight = Integer.valueOf(input.getText().toString());
+                mCurrentCharacter.setHeight(newHeight);
+                String heightString = getString(R.string.height_string,mCurrentCharacter.getHeightString());
+                mTextViewCharacterHeight.setText(heightString);
+
             }
         });
 
         alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                //no action to perform
+                Context t = getApplicationContext();
+                Toast.makeText(t, "Value Unchanged.", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -220,11 +240,6 @@ public class DetailsActivity extends AppCompatActivity implements SetSexDialog.S
         alertDialog.show();
 
         //set properties of the buttons
-        final Button okButton = alertDialog.getButton(AlertDialog.BUTTON_NEUTRAL);
-        LinearLayout.LayoutParams neutralButtonLP = (LinearLayout.LayoutParams) okButton.getLayoutParams();
-        okButton.setTextColor(Color.BLUE);
-        okButton.setLayoutParams(neutralButtonLP);
-
         final Button cancelButton = alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE);
         LinearLayout.LayoutParams negButtonLP = (LinearLayout.LayoutParams) cancelButton.getLayoutParams();
         cancelButton.setTextColor(Color.BLUE);
@@ -235,18 +250,60 @@ public class DetailsActivity extends AppCompatActivity implements SetSexDialog.S
         applyButton.setTextColor(Color.BLUE);
         applyButton.setLayoutParams(posButtonLP);
 
-        //show buttons based on parameters
-        if(!showNeg){
-            cancelButton.setVisibility(View.GONE);
-        }
+    }
 
-        if(!showPos){
-            applyButton.setVisibility(View.GONE);
-        }
 
-        if(!showNeutral){
-            okButton.setVisibility(View.GONE);
-        }
+    public void openAgeDialog(){
+
+        AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+
+        TextView mTextViewTitle = new TextView(this);
+        mTextViewTitle.setText("Set Age");
+        mTextViewTitle.setPadding(3, 3, 3, 10);
+        mTextViewTitle.setGravity(Gravity.CENTER);
+        mTextViewTitle.setTextColor(Color.BLUE);
+        mTextViewTitle.setTextSize(20);
+        alertDialog.setCustomTitle(mTextViewTitle);
+
+        final EditText input = new EditText(this);
+        input.setHint("Type your character's age in years.");
+        input.setInputType(InputType.TYPE_CLASS_TEXT);
+        alertDialog.setView(input);
+
+        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Apply", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Log.d("AGE", Integer.toString(mCurrentCharacter.getAge()));
+                int newAge = Integer.valueOf(input.getText().toString());
+                String ageString = getString(R.string.age_string,newAge);
+                mCurrentCharacter.setAge(newAge);
+                mTextViewCharacterAge.setText(ageString);
+
+            }
+        });
+
+        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Context t = getApplicationContext();
+                Toast.makeText(t, "Value Unchanged.", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        new Dialog(getApplicationContext());
+        alertDialog.show();
+
+        //set properties of the buttons
+        final Button cancelButton = alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE);
+        LinearLayout.LayoutParams negButtonLP = (LinearLayout.LayoutParams) cancelButton.getLayoutParams();
+        cancelButton.setTextColor(Color.BLUE);
+        cancelButton.setLayoutParams(negButtonLP);
+
+        final Button applyButton = alertDialog.getButton(AlertDialog.BUTTON_POSITIVE);
+        LinearLayout.LayoutParams posButtonLP = (LinearLayout.LayoutParams) applyButton.getLayoutParams();
+        applyButton.setTextColor(Color.BLUE);
+        applyButton.setLayoutParams(posButtonLP);
+
     }
 
     public void openGenderDialog(){
@@ -271,6 +328,7 @@ public class DetailsActivity extends AppCompatActivity implements SetSexDialog.S
             public void onClick(DialogInterface dialogInterface, int i) {
                 Log.d("GENDER", mCurrentCharacter.getGenderString());
                 String genderString = getString(R.string.gender_string,input.getText().toString());
+                mCurrentCharacter.setGender(input.getText().toString());
                 mTextViewCharacterGender.setText(genderString);
 
             }
@@ -279,7 +337,8 @@ public class DetailsActivity extends AppCompatActivity implements SetSexDialog.S
         alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                //no action needed
+                Context t = getApplicationContext();
+                Toast.makeText(t, "Value Unchanged.", Toast.LENGTH_SHORT).show();
         }
         });
 
@@ -305,37 +364,17 @@ public class DetailsActivity extends AppCompatActivity implements SetSexDialog.S
         mTextViewCharacterSex.setText(getString(R.string.sex_string,s.toString()));
     }
 
-    public void openRaceDialog() {
+    @Override
+    public void applyRaceChange(Race r) {
+        mCurrentCharacter.setRace(r);
+        mTextViewCharacterRace.setText(getString(R.string.race_string,r.toString()));
+    }
 
-        AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+    public String feetInches(int f){
+        int feet = f/12;
+        int inches = f%12;
 
-        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Apply", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                //no action to perform
-            }
-        });
-
-        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                //no action to perform
-            }
-        });
-
-        new Dialog(getApplicationContext());
-        alertDialog.show();
-
-        //set properties of the buttons
-        final Button cancelButton = alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE);
-        LinearLayout.LayoutParams negButtonLP = (LinearLayout.LayoutParams) cancelButton.getLayoutParams();
-        cancelButton.setTextColor(Color.BLUE);
-        cancelButton.setLayoutParams(negButtonLP);
-
-        final Button applyButton = alertDialog.getButton(AlertDialog.BUTTON_POSITIVE);
-        LinearLayout.LayoutParams posButtonLP = (LinearLayout.LayoutParams) applyButton.getLayoutParams();
-        applyButton.setTextColor(Color.BLUE);
-        applyButton.setLayoutParams(posButtonLP);
+        return String.valueOf(feet)+"' "+ String.valueOf(inches)+'"';
     }
 
 }

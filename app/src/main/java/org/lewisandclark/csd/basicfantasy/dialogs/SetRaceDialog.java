@@ -19,21 +19,23 @@ import org.lewisandclark.csd.basicfantasy.model.Sex;
 /**
  * Created by Thorin Schmidt on 4/29/2019.
  */
-public class SetSexDialog extends AppCompatDialogFragment {
+public class SetRaceDialog extends AppCompatDialogFragment {
 
-    private RadioButton mFemaleButton;
-    private RadioButton mMaleButton;
-    private SetSexDialogListener listener;
+    private RadioButton mDwarfButton;
+    private RadioButton mElfButton;
+    private RadioButton mHalflingButton;
+    private RadioButton mHumanButton;
+    private SetRaceDialogListener listener;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        View view = inflater.inflate(R.layout.dialog_set_sex, null);
+        View view = inflater.inflate(R.layout.dialog_set_race, null);
 
         builder.setView(view)
-                .setTitle("Set Sex")
+                .setTitle("Set Race")
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -43,22 +45,29 @@ public class SetSexDialog extends AppCompatDialogFragment {
                 .setPositiveButton("Apply", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Sex sex = null;
-                        if(mFemaleButton.isChecked()) {
-                            listener.applySexChange(Sex.FEMALE);
+                        Race race = null;
+                        if(mDwarfButton.isChecked()) {
+                            listener.applyRaceChange(Race.DWARF);
                         }
-                        else if(mMaleButton.isChecked()) {
-                            listener.applySexChange(Sex.FEMALE);
+                        else if(mElfButton.isChecked()) {
+                            listener.applyRaceChange(Race.ELF);
+                        }
+                        else if(mHalflingButton.isChecked()) {
+                            listener.applyRaceChange(Race.HALFLING);
+                        }
+                        else if(mHumanButton.isChecked()) {
+                            listener.applyRaceChange(Race.HUMAN);
                         }
                         else{
                             Toast.makeText(getActivity(), "Value Unchanged", Toast.LENGTH_SHORT).show();
                         }
-
                     }
                 });
 
-        mFemaleButton = view.findViewById(R.id.button_female);
-        mMaleButton = view.findViewById(R.id.button_male);
+        mDwarfButton = view.findViewById(R.id.button_dwarf);
+        mElfButton = view.findViewById(R.id.button_elf);
+        mHalflingButton = view.findViewById(R.id.button_halfling);
+        mHumanButton = view.findViewById(R.id.button_human);
 
         return builder.create();
     }
@@ -66,16 +75,14 @@ public class SetSexDialog extends AppCompatDialogFragment {
     public void onAttach(Context context) {
         super.onAttach(context);
         try {
-            listener = (SetSexDialog.SetSexDialogListener) context;
+            listener = (SetRaceDialog.SetRaceDialogListener) context;
         } catch (ClassCastException e) {
             throw new ClassCastException(context.toString() +
                     "must implement CCDialogListener.");
         }
     }
 
-    public interface SetSexDialogListener{
-        void applySexChange(Sex s);
-
+    public interface SetRaceDialogListener{
         void applyRaceChange(Race r);
     }
 

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_gravity="center_horizontal"
+    android:gravity="center_horizontal"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="@string/race_choice_hint" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <RadioButton
+            android:id="@+id/button_dwarf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dwarf"
+            />
+
+        <RadioButton
+            android:id="@+id/button_elf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/elf"
+            />
+
+        <RadioButton
+            android:id="@+id/button_halfling"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/halfling"
+            />
+
+        <RadioButton
+            android:id="@+id/button_human"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/human"
+            />
+
+
+    </RadioGroup>
+
+</LinearLayout>
