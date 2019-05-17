@@ -74,7 +74,8 @@ public class PlayerCharacter {
     private int mRodStaveSpellMod;
 
     private int[] mMoneyArray = new int[5]; //[PP,GP,EP,SP,CP]
-    private ArrayList<Treasure> mTreasureList = new ArrayList<>();
+    private String mTreasures = "";
+
     private ArrayList<Item> mEquipmentList = new ArrayList<>();
 
     public PlayerCharacter(int id) {
@@ -101,6 +102,7 @@ public class PlayerCharacter {
         this.mMoneyArray[Money.PP.ordinal()] = 0;
         this.mMoneyArray[Money.GP.ordinal()] = gp;
         this.mMoneyArray[Money.EP.ordinal()] = 0;
+        this.mMoneyArray[Money.SP.ordinal()] = 0;
         this.mMoneyArray[Money.CP.ordinal()] = 0;
 
 
@@ -406,12 +408,53 @@ public class PlayerCharacter {
         mMoneyArray = moneyArray;
     }
 
-    public ArrayList<Treasure> getTreasureList() {
-        return mTreasureList;
+    public void setPP(int pp){
+        mMoneyArray[Money.PP.ordinal()] = pp;
     }
 
-    public void setTreasureList(ArrayList<Treasure> treasureList) {
-        mTreasureList = treasureList;
+    public void setGP(int gp){
+        mMoneyArray[Money.GP.ordinal()] = gp;
+    }
+
+    public void setEP(int ep){
+        mMoneyArray[Money.EP.ordinal()] = ep;
+    }
+
+    public void setSP(int sp){
+        mMoneyArray[Money.SP.ordinal()] = sp;
+    }
+
+    public void setCP(int cp){
+        mMoneyArray[Money.CP.ordinal()] = cp;
+    }
+
+
+    public int getPP(){
+        return mMoneyArray[Money.PP.ordinal()];
+    }
+
+    public int getGP(){
+        return mMoneyArray[Money.GP.ordinal()];
+    }
+
+    public int getEP(){
+        return mMoneyArray[Money.EP.ordinal()];
+    }
+
+    public int getSP(){
+        return mMoneyArray[Money.SP.ordinal()];
+    }
+
+    public int getCP(){
+        return mMoneyArray[Money.CP.ordinal()];
+    }
+
+    public String getTreasures() {
+        return mTreasures;
+    }
+
+    public void setTreasures(String mTreasures) {
+        this.mTreasures = mTreasures;
     }
 
     public int getTotalHitPoints() {

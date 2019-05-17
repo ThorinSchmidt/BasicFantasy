@@ -37,10 +37,10 @@
     <string name="gold">Gold</string>
     <string name="platinum">Platinum</string>
 
-    <string name="copper_short">cp</string>
-    <string name="silver_short">sp</string>
-    <string name="electrum_short">ep</string>
-    <string name="gold_short">gp</string>
-    <string name="platinum_short">pp</string>
+    <string name="copper_short">CP</string>
+    <string name="silver_short">SP</string>
+    <string name="electrum_short">EP</string>
+    <string name="gold_short">GP</string>
+    <string name="platinum_short">PP</string>
 
 </resources>

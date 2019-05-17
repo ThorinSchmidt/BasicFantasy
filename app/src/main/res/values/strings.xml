@@ -115,5 +115,10 @@
     <string name="choice_female">FEMALE</string>
     <string name="choice_male">MALE</string>
     <string name="race_choice_hint">Choose your character\'s race.</string>
+    <string name="coinage_heading">Coinage</string>
+    <string name="platinum_heading">PP</string>
+    <string name="heading_gold">GP</string>
+    <string name="treasure_hint">Enter individual treasure descriptions here</string>
+    <string name="heading_treasure">Treasures</string>
 
 </resources>
