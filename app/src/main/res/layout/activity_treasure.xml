@@ -77,7 +77,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                 android:textColor="@color/middle_section_header_text"
                 android:textSize="18sp"
-                tools:text="@string/coinage_heading" />
+                android:text="@string/coinage_heading" />
 
         </TableRow>
 
@@ -110,7 +110,7 @@
                     android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                     android:textColor="@color/middle_section_text"
                     android:textSize="18sp"
-                    tools:text="@string/platinum_short" />
+                    android:text="@string/platinum_short" />
 
                 <TextView
                     android:id="@+id/content_platinum"
@@ -121,7 +121,7 @@
                     android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                     android:textColor="@color/middle_section_text"
                     android:textSize="18sp"
-                    tools:text="00" />
+                    android:text="00" />
             </LinearLayout>
 
             <LinearLayout
@@ -144,7 +144,7 @@
                     android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                     android:textColor="@color/middle_section_text"
                     android:textSize="18sp"
-                    tools:text="@string/gold_short" />
+                    android:text="@string/gold_short" />
 
                 <TextView
                     android:id="@+id/content_gold"
@@ -155,7 +155,7 @@
                     android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                     android:textColor="@color/middle_section_text"
                     android:textSize="18sp"
-                    tools:text="00" />
+                    android:text="00" />
             </LinearLayout>
 
             <LinearLayout
@@ -178,7 +178,7 @@
                     android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                     android:textColor="@color/middle_section_text"
                     android:textSize="18sp"
-                    tools:text="@string/electrum_short" />
+                    android:text="@string/electrum_short" />
 
                 <TextView
                     android:id="@+id/content_electrum"
@@ -189,7 +189,7 @@
                     android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                     android:textColor="@color/middle_section_text"
                     android:textSize="18sp"
-                    tools:text="00" />
+                    android:text="00" />
             </LinearLayout>
 
             <LinearLayout
@@ -212,7 +212,7 @@
                     android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                     android:textColor="@color/middle_section_text"
                     android:textSize="18sp"
-                    tools:text="@string/silver_short" />
+                    android:text="@string/silver_short" />
 
                 <TextView
                     android:id="@+id/content_silver"
@@ -223,7 +223,7 @@
                     android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                     android:textColor="@color/middle_section_text"
                     android:textSize="18sp"
-                    tools:text="00" />
+                    android:text="00" />
             </LinearLayout>
 
             <LinearLayout
@@ -246,7 +246,7 @@
                     android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                     android:textColor="@color/middle_section_text"
                     android:textSize="18sp"
-                    tools:text="@string/copper_short" />
+                    android:text="@string/copper_short"/>
 
                 <TextView
                     android:id="@+id/content_copper"
@@ -257,7 +257,7 @@
                     android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                     android:textColor="@color/middle_section_text"
                     android:textSize="18sp"
-                    tools:text="00" />
+                    android:text="00" />
             </LinearLayout>
         </TableRow>
     </TableLayout>
@@ -294,7 +294,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                 android:textColor="@color/bottom_section_header_text"
                 android:textSize="18sp"
-                tools:text="@string/heading_treasure" />
+                android:text="@string/heading_treasure" />
 
         </TableRow>
 

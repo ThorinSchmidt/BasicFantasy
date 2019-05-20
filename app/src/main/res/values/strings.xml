@@ -120,5 +120,9 @@
     <string name="heading_gold">GP</string>
     <string name="treasure_hint">Enter individual treasure descriptions here</string>
     <string name="heading_treasure">Treasures</string>
+    <string name="title_activity_treasure">Treasure</string>
+    <string name="title_activity_details">Details</string>
+    <string name="title_activity_stats">Stats</string>
+    <string name="title_activity_combat">Combat</string>
 
 </resources>

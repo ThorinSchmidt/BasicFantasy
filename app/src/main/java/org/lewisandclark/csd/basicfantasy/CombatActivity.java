@@ -54,7 +54,7 @@ public class CombatActivity extends AppCompatActivity implements CurrentHPDialog
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_combat);
-
+        setTitle(R.string.title_activity_combat);
 
         int totHP = mCurrentCharacter.getTotalHitPoints();
 

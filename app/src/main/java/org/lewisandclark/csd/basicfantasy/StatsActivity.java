@@ -48,7 +48,7 @@ public class StatsActivity extends AppCompatActivity implements XPDialog.XPDialo
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stats);
-
+        setTitle(R.string.title_activity_stats);
         mCurrentCharacter = sCharacters.getPlayerCharacter(sCurrentCharacterIndex);
 
         TextView mTextViewCharacterName = findViewById(R.id.character_name);
@@ -144,7 +144,7 @@ public class StatsActivity extends AppCompatActivity implements XPDialog.XPDialo
 
         mTextViewLeftNavigate.setOnClickListener(view -> {
             //open left screen
-            Intent i = DetailsActivity.newIntent(StatsActivity.this);
+            Intent i = TreasureActivity.newIntent(StatsActivity.this);
             startActivity(i);
             overridePendingTransition(R.anim.left_to_right_in, R.anim.left_to_right_out);
         });

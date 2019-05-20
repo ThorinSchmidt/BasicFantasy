@@ -4,7 +4,6 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -25,16 +24,9 @@ import org.lewisandclark.csd.basicfantasy.model.CharacterList;
 import org.lewisandclark.csd.basicfantasy.model.PlayerCharacter;
 import org.lewisandclark.csd.basicfantasy.model.Race;
 import org.lewisandclark.csd.basicfantasy.model.Sex;
-import org.lewisandclark.csd.basicfantasy.utils.DieRoller;
 
 import static java.lang.Math.abs;
 import static org.lewisandclark.csd.basicfantasy.HomeActivity.sCurrentCharacterIndex;
-import static org.lewisandclark.csd.basicfantasy.model.Attribute.CHA;
-import static org.lewisandclark.csd.basicfantasy.model.Attribute.CON;
-import static org.lewisandclark.csd.basicfantasy.model.Attribute.DEX;
-import static org.lewisandclark.csd.basicfantasy.model.Attribute.INT;
-import static org.lewisandclark.csd.basicfantasy.model.Attribute.STR;
-import static org.lewisandclark.csd.basicfantasy.model.Attribute.WIS;
 
 public class DetailsActivity extends AppCompatActivity implements
         SetSexDialog.SetSexDialogListener,
@@ -77,7 +69,7 @@ public class DetailsActivity extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
-
+        setTitle(R.string.title_activity_details);
         mCurrentCharacter = sCharacters.getPlayerCharacter(sCurrentCharacterIndex);
 
         mTextViewCharacterName = findViewById(R.id.character_name);
@@ -180,11 +172,11 @@ public class DetailsActivity extends AppCompatActivity implements
             public void onClick(View view){
                 //save contents of edittext
                 String msg = mEditTextCharacterDetails.getText().toString();
-                Log.d("DETAILS", msg);
-                mCurrentCharacter.setAppearanceDetails(msg);
+                Log.d("TREASURE", msg);
+                //mCurrentCharacter.setAppearanceDetails(msg);
 
                 //open right screen
-                Intent i = StatsActivity.newIntent(DetailsActivity.this);
+                Intent i = TreasureActivity.newIntent(DetailsActivity.this);
                 startActivity(i);
                 overridePendingTransition(R.anim.right_to_left_in, R.anim.right_to_left_out);
             }
