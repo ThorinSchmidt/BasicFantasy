@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Layout;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -15,6 +16,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.lewisandclark.csd.basicfantasy.model.CharacterList;
 import org.lewisandclark.csd.basicfantasy.model.PlayerCharacter;
@@ -36,6 +38,13 @@ public class TreasureActivity extends AppCompatActivity {
     private TextView mTextViewEP;
     private TextView mTextViewSP;
     private TextView mTextViewCP;
+
+    private LinearLayout mLayoutPP;
+    private LinearLayout mLayoutGP;
+    private LinearLayout mLayoutEP;
+    private LinearLayout mLayoutSP;
+    private LinearLayout mLayoutCP;
+
     private EditText mTreasureDetails;
 
     //navigation buttons
@@ -62,25 +71,64 @@ public class TreasureActivity extends AppCompatActivity {
         mTextViewCharacterClass.setText(mCurrentCharacter.getCharacterClass().toString());
 
         //stuff specific to the layout goes here
+        mLayoutPP = findViewById(R.id.platinum);
+        mLayoutPP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(TreasureActivity.this, "Platinum clicked", Toast.LENGTH_SHORT).show();
+            }
+        });
         mTextViewPP = findViewById(R.id.content_platinum);
         mTextViewPP.setText(Integer.toString(mCurrentCharacter.getPP()));
 
+        mLayoutGP = findViewById(R.id.gold);
+        mLayoutGP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(TreasureActivity.this, "Gold clicked", Toast.LENGTH_SHORT).show();
+            }
+        });
         mTextViewGP = findViewById(R.id.content_gold);
         mTextViewGP.setText(Integer.toString(mCurrentCharacter.getGP()));
 
+        mLayoutSP = findViewById(R.id.silver);
+        mLayoutSP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(TreasureActivity.this, "Silver clicked", Toast.LENGTH_SHORT).show();
+            }
+        });
         mTextViewSP = findViewById(R.id.content_silver);
         mTextViewSP.setText(Integer.toString(mCurrentCharacter.getSP()));
 
+        mLayoutEP = findViewById(R.id.electrum);
+        mLayoutEP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(TreasureActivity.this, "Electrum clicked", Toast.LENGTH_SHORT).show();
+            }
+        });
         mTextViewEP = findViewById(R.id.content_electrum);
         mTextViewEP.setText(Integer.toString(mCurrentCharacter.getEP()));
 
+        mLayoutCP = findViewById(R.id.copper);
+        mLayoutCP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(TreasureActivity.this, "Copper clicked", Toast.LENGTH_SHORT).show();
+            }
+        });
         mTextViewCP = findViewById(R.id.content_copper);
         mTextViewCP.setText(Integer.toString(mCurrentCharacter.getCP()));
+
+
         //navigation buttons
+
         mTextViewLeftNavigate = findViewById(R.id.left_button);
         mTextViewRightNavigate = findViewById(R.id.right_button);
 
         //functions specific to the layout go here
+
 
         //navigation functions
         mTextViewLeftNavigate.setOnClickListener(new View.OnClickListener(){
