@@ -62,6 +62,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
@@ -74,8 +75,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:text="@string/armor"
-            />
+            android:text="@string/armor" />
 
 
         <Button
@@ -83,16 +83,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:text="@string/weapons"
-            />
+            android:text="@string/weapons" />
 
         <Button
             android:id="@+id/button_equipment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:text="@string/equipment"
-            />
+            android:text="@string/equipment" />
 
         <Button
             android:id="@+id/button_checkout"
@@ -101,7 +99,8 @@
             android:layout_marginBottom="@dimen/activity_horizontal_margin"
             android:ems="10"
             android:text="@string/checkout"
-            tools:layout_marginTop="@dimen/activity_horizontal_margin"/>
+            tools:layout_marginTop="@dimen/activity_horizontal_margin" />
 
     </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>

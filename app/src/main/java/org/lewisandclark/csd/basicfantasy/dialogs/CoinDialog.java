@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatDialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import org.lewisandclark.csd.basicfantasy.R;
 import org.lewisandclark.csd.basicfantasy.model.Money;
@@ -17,8 +18,22 @@ import org.lewisandclark.csd.basicfantasy.model.Money;
  * Created by Thorin Schmidt on 2/2/2019.
  */
 public class CoinDialog extends AppCompatDialogFragment {
-    private EditText mEditTextXP;
+    private TextView mCoinType1;
+    private TextView mCoinType2;
+    private TextView mCurrentAmount;
+    private EditText mNewAmount;
+
     private CoinDialogListener listener;
+
+    public static CoinDialog newInstance(Money coinType, int amt){
+        CoinDialog fragment = new CoinDialog();
+        Bundle bundle =  new Bundle();
+        bundle.putSerializable("COIN", coinType);
+        bundle.putInt("AMOUNT", amt);
+        fragment.setArguments(bundle);
+
+        return fragment;
+    }
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -26,6 +41,9 @@ public class CoinDialog extends AppCompatDialogFragment {
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.dialog_coin, null);
+
+        Money coinType = (Money) getArguments().get("COIN");
+        int amount = getArguments().getInt("AMOUNT");
 
         builder.setView(view)
                 .setTitle("Adjust Coins")
@@ -38,13 +56,21 @@ public class CoinDialog extends AppCompatDialogFragment {
                 .setPositiveButton("Adjust", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Money coinType = Money.PP;
-                        int amount = Integer.valueOf(mEditTextXP.getText().toString());
-                        listener.adjustCoins(coinType, amount);
+                        int newAmount = Integer.valueOf(mNewAmount.getText().toString());
+                        listener.adjustCoins(coinType, newAmount);
 
                     }
                 });
-        mEditTextXP = view.findViewById(R.id.edit_xp);
+        mCoinType1 = view.findViewById(R.id.coin_label1);
+        mCoinType1.setText(coinType.name());
+
+        mCoinType2 = view.findViewById(R.id.coin_label2);
+        mCoinType2.setText(coinType.name());
+
+        mCurrentAmount = view.findViewById(R.id.current_amount);
+        mCurrentAmount.setText(Integer.toString(amount));
+
+        mNewAmount = view.findViewById(R.id.new_amount);
 
         return builder.create();
     }
@@ -61,6 +87,6 @@ public class CoinDialog extends AppCompatDialogFragment {
     }
 
     public interface CoinDialogListener{
-        void adjustCoins(Money coinType, int amount);
+        void adjustCoins(Money coinType, int newAmount);
     }
 }

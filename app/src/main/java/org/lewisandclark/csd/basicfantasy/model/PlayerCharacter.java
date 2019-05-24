@@ -408,6 +408,14 @@ public class PlayerCharacter {
         mMoneyArray = moneyArray;
     }
 
+    public int getMoney(Money coinType){
+        return mMoneyArray[coinType.ordinal()];
+    }
+
+    public void setMoney(Money coinType, int amount){
+        mMoneyArray[coinType.ordinal()] = amount;
+    }
+
     public void setPP(int pp){
         mMoneyArray[Money.PP.ordinal()] = pp;
     }

@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -18,12 +19,14 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.lewisandclark.csd.basicfantasy.dialogs.CoinDialog;
 import org.lewisandclark.csd.basicfantasy.model.CharacterList;
+import org.lewisandclark.csd.basicfantasy.model.Money;
 import org.lewisandclark.csd.basicfantasy.model.PlayerCharacter;
 
 import static org.lewisandclark.csd.basicfantasy.HomeActivity.sCurrentCharacterIndex;
 
-public class TreasureActivity extends AppCompatActivity {
+public class TreasureActivity extends AppCompatActivity implements CoinDialog.CoinDialogListener {
     static final String TAG = "";
 
     private CharacterList sCharacters = CharacterList.getPlayerCharacterList(this);
@@ -75,7 +78,8 @@ public class TreasureActivity extends AppCompatActivity {
         mLayoutPP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(TreasureActivity.this, "Platinum clicked", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(TreasureActivity.this, "Platinum clicked", Toast.LENGTH_SHORT).show();
+                openCoinDialog(Money.PP, mCurrentCharacter.getPP());
             }
         });
         mTextViewPP = findViewById(R.id.content_platinum);
@@ -85,37 +89,41 @@ public class TreasureActivity extends AppCompatActivity {
         mLayoutGP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(TreasureActivity.this, "Gold clicked", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(TreasureActivity.this, "Gold clicked", Toast.LENGTH_SHORT).show();
+                openCoinDialog(Money.GP, mCurrentCharacter.getGP());
             }
         });
         mTextViewGP = findViewById(R.id.content_gold);
         mTextViewGP.setText(Integer.toString(mCurrentCharacter.getGP()));
 
-        mLayoutSP = findViewById(R.id.silver);
-        mLayoutSP.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(TreasureActivity.this, "Silver clicked", Toast.LENGTH_SHORT).show();
-            }
-        });
-        mTextViewSP = findViewById(R.id.content_silver);
-        mTextViewSP.setText(Integer.toString(mCurrentCharacter.getSP()));
-
         mLayoutEP = findViewById(R.id.electrum);
         mLayoutEP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(TreasureActivity.this, "Electrum clicked", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(TreasureActivity.this, "Electrum clicked", Toast.LENGTH_SHORT).show();
+                openCoinDialog(Money.EP, mCurrentCharacter.getEP());
             }
         });
         mTextViewEP = findViewById(R.id.content_electrum);
         mTextViewEP.setText(Integer.toString(mCurrentCharacter.getEP()));
 
+        mLayoutSP = findViewById(R.id.silver);
+        mLayoutSP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Toast.makeText(TreasureActivity.this, "Silver clicked", Toast.LENGTH_SHORT).show();
+                openCoinDialog(Money.SP, mCurrentCharacter.getSP());
+            }
+        });
+        mTextViewSP = findViewById(R.id.content_silver);
+        mTextViewSP.setText(Integer.toString(mCurrentCharacter.getSP()));
+
         mLayoutCP = findViewById(R.id.copper);
         mLayoutCP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(TreasureActivity.this, "Copper clicked", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(TreasureActivity.this, "Copper clicked", Toast.LENGTH_SHORT).show();
+                openCoinDialog(Money.CP, mCurrentCharacter.getCP());
             }
         });
         mTextViewCP = findViewById(R.id.content_copper);
@@ -196,6 +204,21 @@ public class TreasureActivity extends AppCompatActivity {
         LinearLayout.LayoutParams neutralButtonLP = (LinearLayout.LayoutParams) okButton.getLayoutParams();
         okButton.setTextColor(Color.BLUE);
         okButton.setLayoutParams(neutralButtonLP);
+    }
+
+    public void openCoinDialog(Money coinType, int currentAmount){
+        CoinDialog coinDialog = new CoinDialog().newInstance(coinType, currentAmount);
+        coinDialog.show(getSupportFragmentManager(), "Coin dialog");
+    }
+
+    @Override
+    public void adjustCoins(Money coinType, int newAmount) {
+        mCurrentCharacter.setMoney(coinType, newAmount);
+        mTextViewPP.setText(Integer.toString(mCurrentCharacter.getPP()));
+        mTextViewGP.setText(Integer.toString(mCurrentCharacter.getGP()));
+        mTextViewEP.setText(Integer.toString(mCurrentCharacter.getEP()));
+        mTextViewSP.setText(Integer.toString(mCurrentCharacter.getSP()));
+        mTextViewCP.setText(Integer.toString(mCurrentCharacter.getCP()));
     }
 
 }
