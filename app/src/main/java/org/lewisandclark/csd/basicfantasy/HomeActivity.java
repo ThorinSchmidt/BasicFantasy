@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -16,13 +17,19 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
 import org.lewisandclark.csd.basicfantasy.model.CharacterClass;
 import org.lewisandclark.csd.basicfantasy.model.CharacterList;
 import org.lewisandclark.csd.basicfantasy.model.EquipmentDatabase;
-import org.lewisandclark.csd.basicfantasy.model.Sex;
 import org.lewisandclark.csd.basicfantasy.model.Item;
 import org.lewisandclark.csd.basicfantasy.model.PlayerCharacter;
 import org.lewisandclark.csd.basicfantasy.model.Race;
+import org.lewisandclark.csd.basicfantasy.model.Sex;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -57,9 +64,10 @@ public class HomeActivity extends AppCompatActivity {
         sCurrentCharacterIndex =
                 getIntent().getIntExtra("HomeActivityIndex", 0);
 
-        if (sCharacters.getList().size() == 0) {
+        /*if (sCharacters.getList().size() == 0) {
             createPreGens();
-        }
+        }*/
+        loadData();
         mCurrentCharacter = sCharacters.getPlayerCharacter(0);
         sCharacters.updateCharacter(mCurrentCharacter,0);
 
@@ -142,6 +150,7 @@ public class HomeActivity extends AppCompatActivity {
         alertDialog.setButton(Dialog.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
+                saveData();
                 finish();
                 moveTaskToBack(true);
             }
@@ -185,5 +194,26 @@ public class HomeActivity extends AppCompatActivity {
         Morningstar.setGender("Andro.");
         sCharacters.addCharacter(Darion);
         sCharacters.addCharacter(Morningstar);
+    }
+
+    private void saveData() {
+        SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(sCharacters);
+        editor.putString("character list", json);
+        editor.apply();
+    }
+
+    private void loadData() {
+        SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = sharedPreferences.getString("task list", null);
+        Type type = new TypeToken<ArrayList<PlayerCharacter>>() {}.getType();
+        sCharacters = gson.fromJson(json, type);
+
+        if (sCharacters == null) {
+            createPreGens();
+        }
     }
 }
