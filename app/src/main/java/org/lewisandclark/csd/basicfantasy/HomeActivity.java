@@ -197,10 +197,12 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void saveData() {
+        Toast.makeText(this,"Saving Characters.", Toast.LENGTH_SHORT).show();
         SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         Gson gson = new Gson();
         String json = gson.toJson(sCharacters);
+        Log.d("JSON_SAVE", json);
         editor.putString("character list", json);
         editor.apply();
     }
@@ -208,12 +210,19 @@ public class HomeActivity extends AppCompatActivity {
     private void loadData() {
         SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
         Gson gson = new Gson();
-        String json = sharedPreferences.getString("task list", null);
-        Type type = new TypeToken<ArrayList<PlayerCharacter>>() {}.getType();
-        sCharacters = gson.fromJson(json, type);
+        String json = sharedPreferences.getString("character list", null);
+        Log.d("JSON_LOAD", json);
+        Type type = new TypeToken<CharacterList>() {}.getType();
+        CharacterList savedList = gson.fromJson(json, type);
+        Log.d("HOME_LISTSIZE", Integer.toString(savedList.sizeOf()));
 
-        if (sCharacters == null) {
+        if (savedList.sizeOf() == 0) {
+            Toast.makeText(this,"Loading Pregens.", Toast.LENGTH_LONG).show();
             createPreGens();
+        }
+        else{
+            Toast.makeText(this,"Loading from Save.", Toast.LENGTH_LONG).show();
+            CharacterList.setPlayerCharacterList(this, savedList.getList());
         }
     }
 }

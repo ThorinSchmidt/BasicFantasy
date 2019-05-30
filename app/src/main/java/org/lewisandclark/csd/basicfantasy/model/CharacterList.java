@@ -16,6 +16,13 @@ public class CharacterList {
         return sCharacterList;
     }
 
+    public static void setPlayerCharacterList(Context context, List<PlayerCharacter> cl){
+        sCharacterList = new CharacterList(context);
+        for(PlayerCharacter c: cl){
+            sCharacterList.addCharacter(c);
+        }
+    }
+
     private CharacterList(Context context){
         mPlayerCharacters = new ArrayList<>();
     }

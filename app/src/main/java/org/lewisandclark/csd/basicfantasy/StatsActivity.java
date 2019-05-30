@@ -49,7 +49,12 @@ public class StatsActivity extends AppCompatActivity implements XPDialog.XPDialo
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stats);
         setTitle(R.string.title_activity_stats);
+        Log.d("STATS_LISTSIZE", Integer.toString(sCharacters.sizeOf()));
+        Log.d("STATS_LISTINDEX", Integer.toString(sCurrentCharacterIndex));
         mCurrentCharacter = sCharacters.getPlayerCharacter(sCurrentCharacterIndex);
+        Log.d("STATS_LISTSIZE", Integer.toString(sCharacters.sizeOf()));
+        Log.d("STATS_LISTINDEX", Integer.toString(sCurrentCharacterIndex));
+
 
         TextView mTextViewCharacterName = findViewById(R.id.character_name);
         TextView mTextViewCharacterClass = findViewById(R.id.character_class);
