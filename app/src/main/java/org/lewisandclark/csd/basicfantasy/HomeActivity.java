@@ -7,8 +7,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -16,6 +14,9 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -29,7 +30,6 @@ import org.lewisandclark.csd.basicfantasy.model.Race;
 import org.lewisandclark.csd.basicfantasy.model.Sex;
 
 import java.lang.reflect.Type;
-import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -64,11 +64,12 @@ public class HomeActivity extends AppCompatActivity {
         sCurrentCharacterIndex =
                 getIntent().getIntExtra("HomeActivityIndex", 0);
 
-        /*if (sCharacters.getList().size() == 0) {
-            createPreGens();
-        }*/
-        loadData();
+        if (sCharacters.getList().size() == 0) {
+            //createPreGens();
+            loadData();
+        }
         mCurrentCharacter = sCharacters.getPlayerCharacter(0);
+        Log.d("CURRENT_CHARACTER", sCharacters.getPlayerCharacter(0).getName());
         sCharacters.updateCharacter(mCurrentCharacter,0);
 
 
@@ -208,21 +209,25 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void loadData() {
+        Log.d("LOAD_DATA", "Load Data Beginning");
         SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
         Gson gson = new Gson();
-        String json = sharedPreferences.getString("character list", null);
+        String json = sharedPreferences.getString("character list", "null");
         Log.d("JSON_LOAD", json);
-        Type type = new TypeToken<CharacterList>() {}.getType();
-        CharacterList savedList = gson.fromJson(json, type);
-        Log.d("HOME_LISTSIZE", Integer.toString(savedList.sizeOf()));
-
-        if (savedList.sizeOf() == 0) {
+        if(json.equals("null")){
+            Log.d("JSON_LOAD", "Took the 'null' path");
             Toast.makeText(this,"Loading Pregens.", Toast.LENGTH_LONG).show();
             createPreGens();
         }
         else{
+            Log.d("JSON_LOAD", "Took the 'not null' path");
+            Type type = new TypeToken<CharacterList>() {}.getType();
+            //CharacterList savedList = gson.fromJson(json, type);
+            sCharacters = gson.fromJson(json, type);
+            Log.d("HOME_LISTSIZE", Integer.toString(sCharacters.sizeOf()));
+
             Toast.makeText(this,"Loading from Save.", Toast.LENGTH_LONG).show();
-            CharacterList.setPlayerCharacterList(this, savedList.getList());
+            CharacterList.setPlayerCharacterList(this, sCharacters.getList());
         }
     }
 }

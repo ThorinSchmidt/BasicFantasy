@@ -6,8 +6,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
 import android.util.Log;
 import android.view.Gravity;
@@ -18,6 +16,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
 import org.lewisandclark.csd.basicfantasy.dialogs.SetRaceDialog;
 import org.lewisandclark.csd.basicfantasy.dialogs.SetSexDialog;
 import org.lewisandclark.csd.basicfantasy.model.CharacterList;
@@ -25,7 +26,6 @@ import org.lewisandclark.csd.basicfantasy.model.PlayerCharacter;
 import org.lewisandclark.csd.basicfantasy.model.Race;
 import org.lewisandclark.csd.basicfantasy.model.Sex;
 
-import static java.lang.Math.abs;
 import static org.lewisandclark.csd.basicfantasy.HomeActivity.sCurrentCharacterIndex;
 
 public class DetailsActivity extends AppCompatActivity implements

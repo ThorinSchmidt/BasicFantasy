@@ -5,15 +5,15 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatDialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatDialogFragment;
+
 import org.lewisandclark.csd.basicfantasy.R;
 import org.lewisandclark.csd.basicfantasy.model.Race;
-import org.lewisandclark.csd.basicfantasy.model.Sex;
 
 
 /**

@@ -1,6 +1,7 @@
 package org.lewisandclark.csd.basicfantasy.model;
 
 import android.content.Context;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +20,11 @@ public class CharacterList {
     public static void setPlayerCharacterList(Context context, List<PlayerCharacter> cl){
         sCharacterList = new CharacterList(context);
         for(PlayerCharacter c: cl){
+            String msg = "Adding character " + c.getName();
+            Log.d("CHARACTERLIST", msg);
             sCharacterList.addCharacter(c);
+            String msg2 = "List size now "+ Integer.toString(sCharacterList.sizeOf());
+            Log.d("CHARACTERLIST", msg2);
         }
     }
 

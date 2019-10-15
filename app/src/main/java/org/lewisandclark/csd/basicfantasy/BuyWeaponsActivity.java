@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
@@ -14,6 +13,8 @@ import android.widget.CheckedTextView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import org.lewisandclark.csd.basicfantasy.model.CharacterList;
 import org.lewisandclark.csd.basicfantasy.model.EquipmentDatabase;
 import org.lewisandclark.csd.basicfantasy.model.Item;
@@ -21,7 +22,6 @@ import org.lewisandclark.csd.basicfantasy.model.Weapon;
 
 import java.util.ArrayList;
 import java.util.List;
-
 
 import static org.lewisandclark.csd.basicfantasy.HomeActivity.sCurrentCharacterIndex;
 

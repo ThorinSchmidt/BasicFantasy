@@ -3,13 +3,14 @@ package org.lewisandclark.csd.basicfantasy;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import org.lewisandclark.csd.basicfantasy.model.Armor;
 import org.lewisandclark.csd.basicfantasy.model.CharacterList;
